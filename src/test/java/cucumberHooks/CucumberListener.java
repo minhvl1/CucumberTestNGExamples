@@ -73,7 +73,7 @@ public class CucumberListener implements EventListener {
 
     // TestRunFinished event is triggered when all feature file executions are completed
     private void runFinished(TestRunFinished event) {
-        extent.flush();
+//        extent.flush();
     }
 
     // This event is triggered when feature file is read
