@@ -57,8 +57,9 @@ public class CucumberListener implements EventListener {
 
     // Here we create the reporter
     private void runStarted(TestRunStarted event) {
-        String timeStamp = new SimpleDateFormat("MM-dd-yyyy_HHmmss").format(Calendar.getInstance().getTime());
-        spark = new ExtentSparkReporter("extentReport" + File.separator +"reports" + File.separator + "ExtentReport_"+timeStamp+".html");
+//        spark = new ExtentSparkReporter("ExtentReport" + File.separator +"reports" + File.separator + "ExtentReport.html");
+        spark = new ExtentSparkReporter("ExtentReport");
+
         extent = new ExtentReports();
         // Create extent report instance with spark reporter
         extent.attachReporter(spark);
