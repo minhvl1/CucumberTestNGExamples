@@ -12,3 +12,7 @@ Feature: Demo API
     Given send post method with "users" module
     When show post response body
     Then Status code post is "201"
+
+  @ApiDataDriven
+  Scenario: fakeresapi
+    Given test

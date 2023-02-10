@@ -97,4 +97,36 @@ public class API {
         softAssert.assertEquals(postResponse.getStatusCode(),Integer.parseInt(arg0));
     }
 
+    @Given("test")
+    public void test() throws IOException {
+        RestAssured.baseURI ="https://fakerestapi.azurewebsites.net/api/v1/";
+        RequestSpecification httpRequest = RestAssured.given();
+        JSONObject requestParams = new JSONObject();
+
+        excelUtils.setExcelFile(FrameworkConstants.EXCEL_DATAAPI_FILE_PATH,"Sheet2");
+        for(int i=1;i<=excelUtils.getRowCountInSheet();i++) {
+            logger.info(excelUtils.getCellData(i,0));
+            logger.info(excelUtils.getCellData(i,1));
+            logger.info(excelUtils.getCellData(i,2));
+            logger.info(excelUtils.getCellData(i,3));
+            requestParams.put("id",excelUtils.getCellData(i,0));
+            requestParams.put("title", excelUtils.getCellData(i,1));
+            requestParams.put("dueDate",excelUtils.getCellData(i,2));
+            requestParams.put("completed", excelUtils.getCellData(i,3));
+
+        }
+
+        httpRequest.body(requestParams.toJSONString());
+        postResponse = httpRequest.request(Method.POST,"Activities");
+        String responseBody = postResponse.getBody().asString();
+        postListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
+
+        logger.info("==================Response==================");
+        logger.info("Status code:"+postResponse.getStatusCode());
+        for(int i =0; i<postListResponse.size();i++){
+            logger.info(postListResponse.get(i));
+        }
+        logger.info("==================End Response==================");
+
+    }
 }
