@@ -15,4 +15,5 @@ Feature: Demo API
 
   @ApiDataDriven
   Scenario: fakeresapi
-    Given test
+#    Given test datadriven fakeresapi
+    Then test datadriven reqres

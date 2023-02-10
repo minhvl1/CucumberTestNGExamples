@@ -34,10 +34,11 @@ public class ExcelUtils {
 
     public String getCellData(int rowNumber,int cellNumber){
         //getting the cell value from rowNumber and cell Number
-        cell =sheet.getRow(rowNumber).getCell(cellNumber);
-
+        cell  =sheet.getRow(rowNumber).getCell(cellNumber);
+        String stringCell = String.valueOf(cell);
         //returning the cell value as string
-        return cell.getStringCellValue();
+//        return cell.getStringCellValue();
+        return stringCell;
     }
 
     public int getRowCountInSheet(){
