@@ -27,5 +27,11 @@ public class DataProviderManager {
         System.out.println("getSignInData: " + data);
         return data;
     }
-
+    @DataProvider(name = "getDataProviderTable")
+    public static Object[][] getDataProvider() {
+        ExcelHelpers excelHelpers = new ExcelHelpers();
+        Object[][] data = excelHelpers.getDataHashTable(Helpers.getCurrentDir() +  FrameworkConstants.EXCEL2_DATA_FILE_PATH, "Sheet1", 3, 8);
+        System.out.println("getDataProviderTable: " + data);
+        return data;
+    }
 }

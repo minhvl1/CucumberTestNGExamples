@@ -81,4 +81,6 @@ public class API {
         softAssert.assertEquals(postResponse.getStatusCode(),Integer.parseInt(arg0));
         softAssert.assertAll();
     }
+
+
 }
