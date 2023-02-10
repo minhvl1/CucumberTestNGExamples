@@ -22,8 +22,8 @@ import java.io.File;
                 "html:target/cucumber-reports/cucumber-reports.html",
                 "json:target/cucumber-reports/cucumber-reports.json",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-         monochrome = true,
-        tags = "@Feature1"
+         monochrome = true
+//        , tags = "@FeatureProvider"
 )
 
 public class TestRunnerForEachFeatures extends AbstractTestNGCucumberTests {
