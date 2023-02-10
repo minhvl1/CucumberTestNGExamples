@@ -35,5 +35,9 @@ public final class FrameworkConstants {
     public static final String OPEN_REPORTS_AFTER_EXECUTION = PropertiesHelpers.getValue("OPEN_REPORTS_AFTER_EXECUTION");
     public static final String EXCEL_DATA_FILE_PATH = PropertiesHelpers.getValue("EXCEL_DATA_FILE_PATH");
     public static final String EXCEL2_DATA_FILE_PATH = PropertiesHelpers.getValue("EXCEL2_DATA_FILE_PATH");
+    public static final String BASE_FAKERESAPI_URL = PropertiesHelpers.getValue("BASE_FAKERESAPI_URL");
+    public static final String FAKER_ACTIVITY_MODULE = PropertiesHelpers.getValue("FAKER_ACTIVITY_MODULE");
+    public static final String BASE_REQRES_URL = PropertiesHelpers.getValue("BASE_REQRES_URL");
+    public static final String EXCEL_DATAAPI_FILE_PATH = PropertiesHelpers.getValue("EXCEL_DATAAPI_FILE_PATH");
 }
 
