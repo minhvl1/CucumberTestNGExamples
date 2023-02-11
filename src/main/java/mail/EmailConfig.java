@@ -24,10 +24,10 @@ public class EmailConfig {
     public static final String SERVER = "smtp.gmail.com";
     public static final String PORT = "587";
 
-    public static final String FROM = "minhvu890yahoo@gmail.com";
-    public static final String PASSWORD = "vgmfqdjeifhhoktc";
+    public static final String FROM = "minhvu1234567yahoo@gmail.com";
+    public static final String PASSWORD = "bwkuznvfgzlalnsu";
 
-    public static final String[] TO = {"minhvu1234567yahoo@gmail.com",
+    public static final String[] TO = {"minhvu890yahoo@gmail.com",
             "minhvu12344yahoo@gmail.com"};
 
     static LocalDateTime localNow = LocalDateTime.now(TimeZone.getTimeZone("Asia/Ho_Chi_Minh").toZoneId());

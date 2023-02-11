@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.EmailSendUtils;
+import utils.FileUtils;
 
 import java.io.File;
 
@@ -27,6 +28,7 @@ import java.io.File;
 )
 
 public class TestRunnerDemoQA extends AbstractTestNGCucumberTests {
+    static FileUtils fileUtils = new FileUtils();
     @Override
     @DataProvider(parallel = false)
     public Object[][] scenarios() {
@@ -46,32 +48,7 @@ public class TestRunnerDemoQA extends AbstractTestNGCucumberTests {
                 , CucumberListener.count_skippedTCs);
     }
     @BeforeSuite
-    public void deleteScreenshotsFiles(){
-        try {
-            System.out.println("================ BEFORE SUITE ================");
-//            String workingDir = System.getProperty("user.dir");
-            String pathFolderallure = "allure-results";
-            String pathFolerScreenshot="extentReport/screenshots";
-
-            File fileAllure = new File(pathFolderallure);
-            File fileScreenshot = new File(pathFolerScreenshot);
-
-            File[] listOfFilesAllure = fileAllure.listFiles();
-            File[] listOfFilesScreenshot = fileScreenshot.listFiles();
-            System.out.println("......................"+pathFolderallure);
-            for(int i = 0; i < listOfFilesAllure.length; i++){
-                if(listOfFilesAllure[i].isFile()){
-                    new File(listOfFilesAllure[i].toString()).delete();
-                }
-            }
-            for(int i = 0; i < listOfFilesScreenshot.length; i++){
-                if(listOfFilesScreenshot[i].isFile()){
-                    new File(listOfFilesScreenshot[i].toString()).delete();
-                }
-            }
-            System.out.println("================ DELETE ================");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public void cleanReport() {
+        fileUtils.cleanAllureReportFiles();
     }
 }

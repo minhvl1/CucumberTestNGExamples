@@ -1,8 +1,3 @@
-/*
- * Copyright (c) 2022.
- * Automation Framework Selenium - Anh Tester
- */
-
 package mail;
 
 import javax.mail.*;

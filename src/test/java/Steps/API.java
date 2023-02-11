@@ -114,23 +114,27 @@ public class API {
             requestParams.put("id", excelUtils.getCellData(i, 0));
             requestParams.put("title", excelUtils.getCellData(i, 1));
             requestParams.put("dueDate", excelUtils.getCellData(i, 2));
-            requestParams.put("completed", false);
-        }
-        httpRequest.header("Content-Type", "application/json");
-        httpRequest.header("accept", "text/plain");
-        httpRequest.header("Connection", "keep-alive");
-        httpRequest.body(requestParams.toJSONString());
-        postResponse = httpRequest.request(Method.POST, "Activities");
-        String responseBody = postResponse.getBody().asString();
-        postListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
+            boolean completed;
+            if (excelUtils.getCellData(i, 3) == "TRUE") {
+                completed = true;
+                requestParams.put("completed", completed);
+            } else {
+                completed = false;
+                requestParams.put("completed", completed);
+            }
+            httpRequest.header("Content-Type", "application/json");
+            httpRequest.body(requestParams.toJSONString());
+            postResponse = httpRequest.request(Method.POST, "Activities");
+            String responseBody = postResponse.getBody().asString();
+            postListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
 
-        logger.info("==================Response==================");
-        logger.info("Status code:" + postResponse.getStatusCode());
-        for (int i = 0; i < postListResponse.size(); i++) {
-            logger.info(postListResponse.get(i));
+            logger.info("==================Response==================");
+            logger.info("Status code:" + postResponse.getStatusCode());
+            for (int y = 0; y < postListResponse.size(); y++) {
+                logger.info(postListResponse.get(y));
+            }
+            logger.info("==================End Response==================");
         }
-        logger.info("==================End Response==================");
-
     }
 
     @Then("test datadriven reqres")

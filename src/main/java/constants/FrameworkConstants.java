@@ -39,5 +39,7 @@ public final class FrameworkConstants {
     public static final String FAKER_ACTIVITY_MODULE = PropertiesHelpers.getValue("FAKER_ACTIVITY_MODULE");
     public static final String BASE_REQRES_URL = PropertiesHelpers.getValue("BASE_REQRES_URL");
     public static final String EXCEL_DATAAPI_FILE_PATH = PropertiesHelpers.getValue("EXCEL_DATAAPI_FILE_PATH");
+    public static final String YES = "yes";
+    public static final String NO = "no";
 }
 
