@@ -48,22 +48,22 @@ public class ProviderStep {
 //        System.out.println(data.get("5"));
 //
 //    }
-//    static ExcelUtils excelUtils = new ExcelUtils();
-//    static String excelFilePath = FrameworkConstants.EXCEL2_DATA_FILE_PATH;
-//
-//    @Given("Test")
-//    public void test() throws Exception {
-//        excelUtils.setExcelFile(excelFilePath, "Sheet1");
-//        for (int i = 1; i <= excelUtils.getRowCountInSheet(); i++) {
-//            System.out.println(excelUtils.getCellData(i, 0));
-//            System.out.println(excelUtils.getCellData(i, 1));
-//            System.out.println(excelUtils.getCellData(i, 2));
-//            System.out.println(excelUtils.getCellData(i, 3));
-//            System.out.println(excelUtils.getCellData(i, 4));
-//        }
-//
-//
-//    }
+    static ExcelUtils excelUtils = new ExcelUtils();
+    static String excelFilePath = FrameworkConstants.EXCEL2_DATA_FILE_PATH;
+
+    @Given("Test")
+    public void test() throws Exception {
+        excelUtils.setExcelFile(excelFilePath, "Sheet1");
+        for (int i = 1; i <= excelUtils.getRowCountInSheet(); i++) {
+            System.out.println(excelUtils.getCellData(i, 0));
+            System.out.println(excelUtils.getCellData(i, 1));
+            System.out.println(excelUtils.getCellData(i, 2));
+            System.out.println(excelUtils.getCellData(i, 3));
+            System.out.println(excelUtils.getCellData(i, 4));
+        }
+
+
+    }
     }
 
 

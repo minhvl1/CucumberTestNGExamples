@@ -11,6 +11,7 @@ import utils.EmailSendUtils;
 import utils.FileUtils;
 
 import java.io.File;
+import java.io.IOException;
 
 
 @Test
@@ -48,7 +49,10 @@ public class TestRunnerDemoQA extends AbstractTestNGCucumberTests {
                 , CucumberListener.count_skippedTCs);
     }
     @BeforeSuite
-    public void cleanReport() {
+    public void cleanReport() throws IOException {
+        System.out.println("================ BEFORE SUITE ================");
         fileUtils.cleanAllureReportFiles();
+        fileUtils.cleanExtentReportFiles();
     }
 }
+
