@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class BaseTest {
-    private Duration longTimeout = FrameworkConstants.LONG_TIMEOUT;
+    private Duration longTimeout = FrameworkConstants.WAIT_DEFAULT;
     public WebElement getElementByXpath(WebDriver driver,String xpath){
         return driver.findElement(By.xpath(xpath));
     }
