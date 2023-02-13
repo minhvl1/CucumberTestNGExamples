@@ -7,7 +7,7 @@
 
     <test name = "Search Minh in goole">
         <classes>
-            <class name = "Steps.ProviderStep"/>
+            <class name = "steps.ProviderStep"/>
         </classes>
 
     </test>
