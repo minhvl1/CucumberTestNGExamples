@@ -1,11 +1,15 @@
 package Steps;
 
+import com.slack.api.methods.SlackApiException;
 import cucumberHooks.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pageObject.DemoQaObject;
+import slack.SlackIntergration;
+
+import java.io.IOException;
 
 
 public class DemoQa {
@@ -29,8 +33,9 @@ public class DemoQa {
     }
 
     @Then("See result contain {string}")
-    public void seeResultContainArg(String arg0) {
+    public void seeResultContainArg(String arg0) throws SlackApiException, IOException {
         demoQaObject.resultMessageContainText(arg0);
+        SlackIntergration.sendMessageToSlack("Assert with agreement " + arg0);
     }
 
 
