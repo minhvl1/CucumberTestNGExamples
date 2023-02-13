@@ -1,4 +1,4 @@
-package pageUIs;
+package pageObjects;
 
 public class DemoQaUI {
     public static String getElementByLabel(String label) {

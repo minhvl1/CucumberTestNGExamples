@@ -1,17 +1,9 @@
-package Steps;
+package steps;
 import constants.FrameworkConstants;
 import utils.ExcelUtils;
 import cucumberHooks.Hooks;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
-import utils.FileUtils;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Comparator;
-import java.util.Optional;
 
 public class ProviderStep {
     WebDriver driver;

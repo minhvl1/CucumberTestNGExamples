@@ -8,16 +8,15 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.EmailSendUtils;
-import utils.FileUtils;
+import utils.FileHelpers;
 
-import java.io.File;
 import java.io.IOException;
 
 
 @Test
 @CucumberOptions(
         features = "src/test/resources/features/DemoQa.feature",
-        glue = {"Steps","cucumberHooks"},
+        glue = {"steps","cucumberHooks"},
         plugin = {"cucumberHooks.CucumberListener",
                 "pretty",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
@@ -29,7 +28,7 @@ import java.io.IOException;
 )
 
 public class TestRunnerDemoQA extends AbstractTestNGCucumberTests {
-    static FileUtils fileUtils = new FileUtils();
+    static FileHelpers fileHelpers = new FileHelpers();
     @Override
     @DataProvider(parallel = false)
     public Object[][] scenarios() {
@@ -51,8 +50,8 @@ public class TestRunnerDemoQA extends AbstractTestNGCucumberTests {
     @BeforeSuite
     public void cleanReport() throws IOException {
         System.out.println("================ BEFORE SUITE ================");
-        fileUtils.cleanAllureReportFiles();
-        fileUtils.cleanExtentReportFiles();
+        fileHelpers.cleanAllureReportFiles();
+        fileHelpers.cleanExtentReportFiles();
     }
 }
 

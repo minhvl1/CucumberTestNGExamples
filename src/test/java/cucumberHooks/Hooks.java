@@ -1,6 +1,7 @@
 package cucumberHooks;
 
 
+import constants.FrameworkConstants;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Scenario;
@@ -23,10 +24,6 @@ public class Hooks {
 
     private static WebDriver driver;
 
-    public static String BrowserName(){
-        String browser ="hchrome";
-        return browser;
-    }
     public synchronized static WebDriver openAndQuitBrowser() {
         String browser = System.getProperty("BROWSER");
 //        String browser = BrowserName();
@@ -38,7 +35,7 @@ public class Hooks {
                 if (browser == null) {
                     browser = System.getenv("BROWSER");
                     if (browser == null) {
-                        browser = "hchrome";
+                        browser = FrameworkConstants.BROWSER;
                     }
                 }
 

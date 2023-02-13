@@ -1,9 +1,5 @@
-/*
- * Copyright (c) 2022 Anh Tester
- * Automation Framework Selenium
- */
 
-package helpers;
+package utils;
 
 import java.io.*;
 import java.nio.charset.Charset;

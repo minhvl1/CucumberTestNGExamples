@@ -1,8 +1,8 @@
 package common;
 
 import constants.FrameworkConstants;
-import helpers.ExcelHelpers;
-import helpers.Helpers;
+import utils.ExcelHelpers;
+import utils.Helpers;
 import org.testng.annotations.DataProvider;
 
 public class DataProviderManager {

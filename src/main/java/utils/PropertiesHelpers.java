@@ -1,12 +1,10 @@
-/*
- * Copyright (c) 2022 Anh Tester
- * Automation Framework Selenium
- */
 
-package helpers;
+
+package utils;
 
 
 import io.qameta.allure.Step;
+import utils.Helpers;
 import utils.LanguageUtils;
 import utils.Log;
 
