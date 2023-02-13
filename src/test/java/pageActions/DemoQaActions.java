@@ -1,14 +1,14 @@
-package pageObject;
+package pageActions;
 
 import common.BaseTest;
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
-import pageUIs.DemoQaUI;
+import pageObjects.DemoQaUI;
 
-public class DemoQaObject extends BaseTest {
+public class DemoQaActions extends BaseTest {
     WebDriver driver;
     SoftAssert softAssert = new SoftAssert();
-    public DemoQaObject(WebDriver driver){
+    public DemoQaActions(WebDriver driver){
         this.driver = driver;
     }
     public void clickToRadioButton(String label){

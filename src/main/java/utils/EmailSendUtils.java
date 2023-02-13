@@ -1,17 +1,17 @@
 package utils;
 
 import constants.FrameworkConstants;
-import mail.EmailAttachmentsSender;
 
 import javax.mail.MessagingException;
+
 import static mail.EmailConfig.*;
 import static constants.FrameworkConstants.REPORT_TITLE;
 
 public class EmailSendUtils {
-
+    static FileHelpers fileHelpers = new FileHelpers();
     public static void sendEmail(int count_totalTCs, int count_passedTCs, int count_failedTCs, int count_skippedTCs) {
 
-        if (FrameworkConstants.SEND_EMAIL_TO_USERS=="YES") {
+        if (FrameworkConstants.SEND_EMAIL_TO_USERS.trim().equalsIgnoreCase(FrameworkConstants.YES))  {
             System.out.println("****************************************");
             System.out.println("Send Email - START");
             System.out.println("****************************************");
@@ -20,8 +20,7 @@ public class EmailSendUtils {
             //System.out.println(messageBody);
 
             try {
-                EmailAttachmentsSender.sendEmailWithAttachments(SERVER, PORT, FROM, PASSWORD, TO, SUBJECT, messageBody,"extentReport/PdfReport/ExtendPdf.pdf");
-
+                EmailAttachmentsSender.sendEmailWithAttachments(SERVER, PORT, FROM, PASSWORD, TO, SUBJECT, messageBody,fileHelpers.getLastFileModified("ExtentReports")+"/ExtentReports/ExtendPdf.pdf");
                 System.out.println("****************************************");
                 System.out.println("Email sent successfully.");
                 System.out.println("Send Email - END");

@@ -9,6 +9,11 @@ Feature: Demo API
 
   @postMethodApi
   Scenario: test post api
-    Given send post method
+    Given send post method with "users" module
     When show post response body
     Then Status code post is "201"
+
+  @ApiDataDriven
+  Scenario: fakeresapi
+    Given test datadriven fakeresapi
+    Then test datadriven reqres
