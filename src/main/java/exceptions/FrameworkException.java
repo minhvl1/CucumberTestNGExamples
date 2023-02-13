@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2022.
- * Automation Framework Selenium - Anh Tester
- */
 
 package exceptions;
 

@@ -1,14 +1,14 @@
-package pageObject;
+package pageActions;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import pageUIs.GoogleUI;
+import pageObjects.GoogleUI;
 
-public class GooglePageObject {
+public class GooglePageActions {
     private WebDriver driver;
 
-    public GooglePageObject(WebDriver driver){
+    public GooglePageActions(WebDriver driver){
         this.driver = driver;
     }
 

@@ -1,21 +1,21 @@
-package Steps;
+package steps;
 
 import cucumberHooks.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-import pageObject.DemoQaObject;
+import pageActions.DemoQaActions;
 
 
 public class DemoQa {
 
     WebDriver driver;
-    private DemoQaObject demoQaObject;
+    private DemoQaActions demoQaActions;
 
     public DemoQa() {
         this.driver = Hooks.openAndQuitBrowser();
-        demoQaObject = new DemoQaObject(driver);
+        demoQaActions = new DemoQaActions(driver);
     }
 
     @Given("Go to demoqa url")
@@ -25,12 +25,12 @@ public class DemoQa {
 
     @When("check {string} radio button")
     public void checkArgRadioButton(String arg0) {
-        demoQaObject.clickToRadioButton(arg0.toLowerCase());
+        demoQaActions.clickToRadioButton(arg0.toLowerCase());
     }
 
     @Then("See result contain {string}")
     public void seeResultContainArg(String arg0) {
-        demoQaObject.resultMessageContainText(arg0);
+        demoQaActions.resultMessageContainText(arg0);
     }
 
 

@@ -1,15 +1,9 @@
-/*
- * Copyright (c) 2022 Anh Tester
- * Automation Framework Selenium
- */
-
 package constants;
 
 
-import helpers.Helpers;
-import helpers.PropertiesHelpers;
+import utils.Helpers;
+import utils.PropertiesHelpers;
 
-import java.io.File;
 import java.time.Duration;
 
 //final -> We do not want any class to extend this class
