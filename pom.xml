@@ -25,7 +25,10 @@
         <log4j.version>2.19.0</log4j.version>
         <extentreports.version>5.0.9</extentreports.version>
         <apache-poi.version>5.2.3</apache-poi.version>
+        <hubspot.slack.version>1.12</hubspot.slack.version>
+        <slack.api.version>[1,)</slack.api.version>
         <env>testing</env>
+
     </properties>
     <dependencies>
         <dependency>
@@ -186,6 +189,21 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>${apache-poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hubspot.slack</groupId>
+            <artifactId>slack-base</artifactId>
+            <version>${hubspot.slack.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hubspot.slack</groupId>
+            <artifactId>slack-java-client</artifactId>
+            <version>${hubspot.slack.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.slack.api</groupId>
+            <artifactId>bolt-jetty</artifactId>
+            <version>${slack.api.version}</version>
         </dependency>
     </dependencies>
 
