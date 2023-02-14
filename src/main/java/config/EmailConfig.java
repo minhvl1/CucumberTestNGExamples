@@ -3,7 +3,7 @@
  * Automation Framework Selenium - Anh Tester
  */
 
-package mail;
+package config;
 
 
 import java.time.LocalDateTime;
@@ -16,8 +16,8 @@ import java.util.TimeZone;
 public class EmailConfig {
 
     //Nhớ tạo mật khẩu app (App Password) cho Gmail mới gửi được nhen
-    //Nếu dùng mail của Hosting thì bình thường
-    //Enable Override Report and Send mail in config file => src/test/resources/config/config.properties
+    //Nếu dùng config của Hosting thì bình thường
+    //Enable Override Report and Send config in config file => src/test/resources/config/config.properties
     //OVERRIDE_REPORTS=yes
     //send_email_to_users=yes
 

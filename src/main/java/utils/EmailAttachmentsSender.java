@@ -17,12 +17,12 @@ public class EmailAttachmentsSender {
         // sets SMTP server properties
 
         Properties properties = new Properties();
-        properties.put("mail.smtp.host", host);
-        properties.put("mail.smtp.port", port);
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.user", userName);
-        properties.put("mail.password", password);
+        properties.put("config.smtp.host", host);
+        properties.put("config.smtp.port", port);
+        properties.put("config.smtp.auth", "true");
+        properties.put("config.smtp.starttls.enable", "true");
+        properties.put("config.user", userName);
+        properties.put("config.password", password);
 
         // creates a new session with an authenticator
         Authenticator auth = new Authenticator() {
@@ -32,7 +32,7 @@ public class EmailAttachmentsSender {
         };
         Session session = Session.getInstance(properties, auth);
 
-        // creates a new e-mail message
+        // creates a new e-config message
         Message msg = new MimeMessage(session);
 
         msg.setFrom(new InternetAddress(userName));
@@ -72,10 +72,10 @@ public class EmailAttachmentsSender {
             }
         }
 
-        // sets the multi-part as e-mail's content
+        // sets the multi-part as e-config's content
         msg.setContent(multipart);
 
-        // sends the e-mail
+        // sends the e-config
         Transport.send(msg);
     }
 

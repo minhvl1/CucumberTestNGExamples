@@ -4,7 +4,7 @@ import constants.FrameworkConstants;
 
 import javax.mail.MessagingException;
 
-import static mail.EmailConfig.*;
+import static config.EmailConfig.*;
 import static constants.FrameworkConstants.REPORT_TITLE;
 
 public class EmailSendUtils {

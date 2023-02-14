@@ -27,6 +27,8 @@
         <apache-poi.version>5.2.3</apache-poi.version>
         <hubspot.slack.version>1.12</hubspot.slack.version>
         <slack.api.version>[1,)</slack.api.version>
+        <env>testing</env>
+
     </properties>
     <dependencies>
         <dependency>
@@ -207,7 +209,14 @@
 
     <profiles>
         <profile>
-            <id>run-demo-api</id>
+            <id>release</id>
+<!--            <activation>-->
+<!--                <activeByDefault>true</activeByDefault>-->
+<!--            </activation>-->
+            <properties>
+                <context>default</context>
+                <env>release</env>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -216,17 +225,36 @@
                         <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/suites/RunaPI.xml</suiteXmlFile>
+                                <suiteXmlFile>src/test/resources/suites/RunAllFeatures.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
                 </plugins>
+                <resources>
+                    <resource>
+                        <directory>src/test/resources-${env}</directory>
+                    </resource>
+                </resources>
             </build>
         </profile>
 
         <profile>
-            <id>run-single</id>
+            <id>testing</id>
+            <!--
+              <activation>
+                <activeByDefault>true</activeByDefault>
+              </activation>
+              -->
+            <properties>
+                <context>default</context>
+                <env>testing</env>
+            </properties>
             <build>
+                <resources>
+                    <resource>
+                        <directory>src/test/resources-${env}</directory>
+                    </resource>
+                </resources>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -234,38 +262,20 @@
                         <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/suites/RunEachFeatures.xml</suiteXmlFile>
+                                <suiteXmlFile>src/test/resources/suites/RunAllFeatures.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
         </profile>
-
-        <profile>
-            <id>run-without-cucumber</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-plugin.version}</version>
-                        <configuration>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/suites/RunWithoutCucumber.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
     </profiles>
 
 
 
     <!--config xml file to run -->
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -298,8 +308,11 @@
                     </dependency>
                 </dependencies>
             </plugin>
-
-
         </plugins>
+        <resources>
+            <resource>
+            <directory>src/test/resources-${env}</directory>
+            </resource>
+        </resources>
     </build>
 </project>

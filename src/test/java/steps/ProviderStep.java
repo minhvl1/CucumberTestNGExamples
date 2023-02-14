@@ -1,16 +1,21 @@
 package steps;
-import constants.FrameworkConstants;
-import utils.ExcelUtils;
-import cucumberHooks.Hooks;
+import utils.PropertiesHelpers;
+
+import org.apache.log4j.Logger;
 import io.cucumber.java.en.Given;
-import org.openqa.selenium.WebDriver;
+
+import java.io.IOException;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
 
 public class ProviderStep {
-    WebDriver driver;
+//    WebDriver driver;
+private static final Logger logger = Logger.getLogger(API.class);
+//    public ProviderStep() {
+//        this.driver = Hooks.openAndQuitBrowser();
 
-    public ProviderStep() {
-        this.driver = Hooks.openAndQuitBrowser();
-    }
+//    }
 
 
 //@Test(dataProvider ="test-data2",dataProviderClass = DataProviderManager.class)
@@ -40,22 +45,26 @@ public class ProviderStep {
 //        System.out.println(data.get("5"));
 //
 //    }
-    static ExcelUtils excelUtils = new ExcelUtils();
-    static String excelFilePath = FrameworkConstants.EXCEL2_DATA_FILE_PATH;
-
+//    static ExcelUtils excelUtils = new ExcelUtils();
+//    static String excelFilePath = FrameworkConstants.EXCEL2_DATA_FILE_PATH;
+//
+//    @Given("Test")
+//    public void test() throws Exception {
+//        excelUtils.setExcelFile(excelFilePath, "Sheet1");
+//        for (int i = 1; i <= excelUtils.getRowCountInSheet(); i++) {
+//            System.out.println(excelUtils.getCellData(i, 0));
+//            System.out.println(excelUtils.getCellData(i, 1));
+//            System.out.println(excelUtils.getCellData(i, 2));
+//            System.out.println(excelUtils.getCellData(i, 3));
+//            System.out.println(excelUtils.getCellData(i, 4));
+//        }
+//
+//
+//    }
     @Given("Test")
-    public void test() throws Exception {
-        excelUtils.setExcelFile(excelFilePath, "Sheet1");
-        for (int i = 1; i <= excelUtils.getRowCountInSheet(); i++) {
-            System.out.println(excelUtils.getCellData(i, 0));
-            System.out.println(excelUtils.getCellData(i, 1));
-            System.out.println(excelUtils.getCellData(i, 2));
-            System.out.println(excelUtils.getCellData(i, 3));
-            System.out.println(excelUtils.getCellData(i, 4));
+    public void test() {
+    logger.info("Enviroment:"+PropertiesHelpers.getEnvironment("ENV"));
         }
-
-
-    }
     }
 
 
