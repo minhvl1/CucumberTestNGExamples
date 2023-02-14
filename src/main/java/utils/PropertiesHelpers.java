@@ -11,6 +11,7 @@ import utils.Log;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.Properties;
 
@@ -20,13 +21,13 @@ public class PropertiesHelpers {
     private static String linkFile;
     private static FileInputStream file;
     private static FileOutputStream out;
-    private static String relPropertiesFilePathDefault = "src/test/resources/config/config.properties";
+    private static String relPropertiesFilePathDefault = "src/test/resources-testing/application.properties";
 
     @Step("Loaded all properties files")
     public static Properties loadAllFiles() {
         LinkedList<String> files = new LinkedList<>();
         // Add tất cả file Properties vào đây theo mẫu
-        files.add("src/test/resources/config/config.properties");
+        files.add("src/test/resources-testing/application.properties");
         try {
             properties = new Properties();
 
@@ -106,5 +107,20 @@ public class PropertiesHelpers {
             System.out.println(e.getMessage());
         }
     }
+
+
+        public static String getEnvironment(String key)  {
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+            InputStream input = classloader.getResourceAsStream("application.properties");
+            final Properties properties = new Properties();
+            try {
+                properties.load(input);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            return properties.getProperty(key);
+        }
+
+
 
 }
