@@ -1,14 +1,11 @@
 package steps;
 
-import com.slack.api.methods.SlackApiException;
 import cucumberHooks.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import pageActions.DemoQaActions;
-
-import java.io.IOException;
 
 
 public class DemoQa {
@@ -32,7 +29,7 @@ public class DemoQa {
     }
 
     @Then("See result contain {string}")
-    public void seeResultContainArg(String arg0) throws SlackApiException, IOException {
+    public void seeResultContainArg(String arg0) {
         demoQaActions.resultMessageContainText(arg0);
     }
 
