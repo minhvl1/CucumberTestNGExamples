@@ -7,6 +7,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utils.SlackIntergration;
 import utils.EmailSendUtils;
 import utils.FileHelpers;
 
@@ -43,6 +44,11 @@ public class TestRunnerDemoQA extends AbstractTestNGCucumberTests {
     public void afterSuite() {
         System.out.println("================ AFTER SUITE ================");
         EmailSendUtils.sendEmail(CucumberListener.count_totalTCs
+                , CucumberListener.count_passedTCs
+                , CucumberListener.count_failedTCs
+                , CucumberListener.count_skippedTCs);
+
+        SlackIntergration.sendResultRunnerToSlack(CucumberListener.count_totalTCs
                 , CucumberListener.count_passedTCs
                 , CucumberListener.count_failedTCs
                 , CucumberListener.count_skippedTCs);
