@@ -38,3 +38,5 @@
 ![image](https://user-images.githubusercontent.com/67543695/218368288-8010dba5-53ff-4d80-a84b-2017cab19de7.png)
 
 7. Write log to file
+
+8. Send message to Slack
