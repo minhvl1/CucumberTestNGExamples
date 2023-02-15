@@ -1,5 +1,9 @@
 ﻿# GB-Demo
 
+### V1.1
+1. Add multiple configure file for multiple environment (default: testing env)
+2. Add Send message to slack utils
+
 ### V1.0
 ### SOME FEATURES IN FRAMEWORK
 
