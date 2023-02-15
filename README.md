@@ -40,3 +40,5 @@
 7. Write log to file
 
 8. Send message to Slack
+
+![image](https://user-images.githubusercontent.com/107853696/218916459-41388bca-49d0-438f-8b4c-d1c48c883f69.png)
