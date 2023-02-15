@@ -33,5 +33,4 @@ public class DemoQa {
         demoQaActions.resultMessageContainText(arg0);
     }
 
-
 }
