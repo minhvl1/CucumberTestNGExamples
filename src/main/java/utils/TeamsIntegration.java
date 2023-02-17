@@ -22,7 +22,7 @@ public class TeamsIntegration {
                 + "<br>View report at link: <https://www.google.com/>";
 
         try {
-            if (FLAG_SEND_TO_TEAMS.trim().equalsIgnoreCase(FrameworkConstants.YES)) {
+            if (FrameworkConstants.SEND_MSG_TO_TEAMS.trim().equalsIgnoreCase(FrameworkConstants.YES))  {
                 sendPOST(msg);
             }
         } catch (IOException e) {

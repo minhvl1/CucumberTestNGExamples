@@ -17,7 +17,7 @@ public class SlackIntergration {
 
     public static void sendMessageToSlack(String message) throws SlackApiException, IOException {
 
-        if (flagSendToSlack.trim().equalsIgnoreCase(FrameworkConstants.YES)) {
+        if (FrameworkConstants.SEND_MSG_TO_SLACK.trim().equalsIgnoreCase(FrameworkConstants.YES))  {
             // Initialize an API Methods client with the given token
             Slack slack = Slack.getInstance();
 
