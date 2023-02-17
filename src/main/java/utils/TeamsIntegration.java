@@ -12,7 +12,7 @@ Step:
 
  */
 public class TeamsIntegration {
-    public static void sendMessageToTeams(int count_totalTCs, int count_passedTCs, int count_failedTCs, int count_skippedTCs) throws IOException {
+    public static void sendMessageToTeams(int count_totalTCs, int count_passedTCs, int count_failedTCs, int count_skippedTCs) {
         String msg = "The Runner's result: "+"<br>count_totalTCs: " + count_totalTCs + "<br>count_passedTCs: "
                 + count_passedTCs + "<br>count_failedTCs: " + count_failedTCs + "<br>count_skippedTCs: " + count_skippedTCs
                 + "<br>View report at link: <https://www.google.com/>";

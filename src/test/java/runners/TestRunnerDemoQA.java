@@ -42,7 +42,7 @@ public class TestRunnerDemoQA extends AbstractTestNGCucumberTests {
 //    }
 
     @AfterSuite
-    public void afterSuite() throws IOException {
+    public void afterSuite() {
         System.out.println("================ AFTER SUITE ================");
         EmailSendUtils.sendEmail(CucumberListener.count_totalTCs
                 , CucumberListener.count_passedTCs
