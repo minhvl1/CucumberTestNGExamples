@@ -1,5 +1,7 @@
 package utils;
 
+import constants.FrameworkConstants;
+
 import java.io.*;
 import java.net.*;
 
@@ -12,20 +14,21 @@ Step:
 
  */
 public class TeamsIntegration {
+    private static final String BASE_URL = PropertiesHelpers.getEnvironment("TEAMS_WEBHOOK_URL");
+    private static final String FLAG_SEND_TO_TEAMS = PropertiesHelpers.getEnvironment("SEND_TO_TEAMS");
     public static void sendMessageToTeams(int count_totalTCs, int count_passedTCs, int count_failedTCs, int count_skippedTCs) {
         String msg = "The Runner's result: "+"<br>count_totalTCs: " + count_totalTCs + "<br>count_passedTCs: "
                 + count_passedTCs + "<br>count_failedTCs: " + count_failedTCs + "<br>count_skippedTCs: " + count_skippedTCs
                 + "<br>View report at link: <https://www.google.com/>";
 
         try {
-            sendPOST(msg);
+            if (FLAG_SEND_TO_TEAMS.trim().equalsIgnoreCase(FrameworkConstants.YES)) {
+                sendPOST(msg);
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
-    private static final String BASE_URL = PropertiesHelpers.getEnvironment("TEAMS_WEBHOOK_URL");
     private static void sendPOST(String message) throws IOException {
         URL url = new URL (BASE_URL);
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
