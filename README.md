@@ -46,3 +46,8 @@
 8. Send message to Slack
 
 ![image](https://user-images.githubusercontent.com/107853696/218916459-41388bca-49d0-438f-8b4c-d1c48c883f69.png)
+
+9. Send message to Microsoft Teams
+
+![image](https://user-images.githubusercontent.com/67543695/220000344-2344aca0-ee10-4c8e-be50-2c17eac04011.png)
+
