@@ -29,6 +29,8 @@
 
 3. Config in config.properties(src/test/resources/config/config.properties)
 
+![image](https://user-images.githubusercontent.com/67543695/220126487-781ba264-760d-4216-a69b-d2bba655d443.png)
+
 4. Extent Report
 
 ![image](https://user-images.githubusercontent.com/67543695/218368035-87683f26-cbf7-404e-8912-abbb8ef5c410.png)
@@ -37,17 +39,23 @@
 
 ![image](https://user-images.githubusercontent.com/67543695/218368526-6e355f9f-06f2-4d7a-bc3e-bf8622a947ef.png)
 
-6. Pdf Report
+6. Cucumber Report
+
+![image](https://user-images.githubusercontent.com/67543695/220126109-3ad6ea4d-bae4-4a91-be95-43fb73cd1fd5.png)
+
+7. Pdf Report
 
 ![image](https://user-images.githubusercontent.com/67543695/218368288-8010dba5-53ff-4d80-a84b-2017cab19de7.png)
 
-7. Write log to file
+8. Write log to file
 
-8. Send message to Slack
+![image](https://user-images.githubusercontent.com/67543695/220125765-b487abdb-c413-491b-9e5a-ed6541fba9e8.png)
+
+9. Send message to Slack
 
 ![image](https://user-images.githubusercontent.com/107853696/218916459-41388bca-49d0-438f-8b4c-d1c48c883f69.png)
 
-9. Send message to Microsoft Teams
+10. Send message to Microsoft Teams
 
 ![image](https://user-images.githubusercontent.com/67543695/220000344-2344aca0-ee10-4c8e-be50-2c17eac04011.png)
 
