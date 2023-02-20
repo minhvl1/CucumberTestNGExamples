@@ -24,6 +24,8 @@ public final class FrameworkConstants {
     public static final String FAKER_ACTIVITY_MODULE = PropertiesHelpers.getEnvironment("FAKER_ACTIVITY_MODULE");
     public static final String BASE_REQRES_URL = PropertiesHelpers.getEnvironment("BASE_REQRES_URL");
     public static final String EXCEL_DATAAPI_FILE_PATH = PropertiesHelpers.getEnvironment("EXCEL_DATAAPI_FILE_PATH");
+    public static final String SEND_MSG_TO_TEAMS = PropertiesHelpers.getEnvironment("SEND_TO_TEAMS");
+    public static final String SEND_MSG_TO_SLACK = PropertiesHelpers.getEnvironment("SEND_TO_SLACK");
     public static final String YES = "yes";
     public static final String NO = "no";
 }
