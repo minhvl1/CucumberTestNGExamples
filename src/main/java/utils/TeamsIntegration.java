@@ -23,13 +23,13 @@ public class TeamsIntegration {
 
         try {
             if (FrameworkConstants.SEND_MSG_TO_TEAMS.trim().equalsIgnoreCase(FrameworkConstants.YES))  {
-                sendPOST(msg);
+                sendMessageToTeams(msg);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    private static void sendPOST(String message) throws IOException {
+    private static void sendMessageToTeams(String message) throws IOException {
         URL url = new URL (BASE_URL);
         HttpURLConnection con = (HttpURLConnection)url.openConnection();
         con.setRequestMethod("POST");

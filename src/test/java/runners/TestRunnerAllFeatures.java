@@ -9,9 +9,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import steps.API;
-import utils.EmailSendUtils;
-import utils.FileHelpers;
-import utils.PropertiesHelpers;
+import utils.*;
 
 import java.io.IOException;
 
@@ -47,6 +45,15 @@ public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
     public void afterSuite() {
         logger.info("================ AFTER SUITE ================");
         EmailSendUtils.sendEmail(CucumberListener.count_totalTCs
+                , CucumberListener.count_passedTCs
+                , CucumberListener.count_failedTCs
+                , CucumberListener.count_skippedTCs);
+
+        SlackIntergration.sendResultRunnerToSlack(CucumberListener.count_totalTCs
+                , CucumberListener.count_passedTCs
+                , CucumberListener.count_failedTCs
+                , CucumberListener.count_skippedTCs);
+        TeamsIntegration.sendMessageToTeams(CucumberListener.count_totalTCs
                 , CucumberListener.count_passedTCs
                 , CucumberListener.count_failedTCs
                 , CucumberListener.count_skippedTCs);
