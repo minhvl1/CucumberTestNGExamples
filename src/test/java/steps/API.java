@@ -42,6 +42,7 @@ public class API {
         RequestSpecification httpRequest = RestAssured.given();
 
         getResponse = httpRequest.request(Method.GET, arg0);
+//        getResponse.prettyPrint();
         String responseBody = getResponse.getBody().asString();
         getListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
     }
@@ -80,6 +81,7 @@ public class API {
 
         httpRequest.body(requestParams.toJSONString());
         postResponse = httpRequest.request(Method.POST, arg0);
+//        postResponse.prettyPrint();
         String responseBody = postResponse.getBody().asString();
         postListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
     }
