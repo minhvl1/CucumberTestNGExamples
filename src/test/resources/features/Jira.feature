@@ -1,4 +1,5 @@
 @Jira
   Feature: Jira issue
-    Scenario: Jira
+    Scenario:  Create Issue Jira
       Given Authen jira
+      Then Show reponse
