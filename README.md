@@ -27,6 +27,10 @@
 
 `mvn clean install -P run-demo-api`
 
+Run by tags:
+
+`mvn verify -Dcucumber.filter.tags="@debug1 or @debug2"`
+
 3. Config in config.properties(src/test/resources/config/config.properties)
 
 ![image](https://user-images.githubusercontent.com/67543695/220126487-781ba264-760d-4216-a69b-d2bba655d443.png)
