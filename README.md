@@ -29,7 +29,7 @@
 
 Run by tags:
 
-`mvn verify -Dcucumber.filter.tags="@debug1 or @debug2"`
+`mvn verify -D"cucumber.filter.tags=@debug1 or @debug2"`
 
 3. Config in config.properties(src/test/resources/config/config.properties)
 

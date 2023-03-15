@@ -1,23 +1,25 @@
 package models;
 
-import org.json.simple.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 public class IssueJira {
 
-    public static JSONObject CreateIssueJiraBody(){
-        JSONObject issueType = new JSONObject();
-        issueType.put("id","10001");
+    public static String CreateIssueJiraBody(){
+        JsonObject issueType = new JsonObject();
+        issueType.addProperty("id","10001");
 
-        JSONObject project = new JSONObject();
-        project.put("id","10000");
+        JsonObject project = new JsonObject();
+        project.addProperty("id","10000");
 
-        JSONObject fields = new JSONObject();
-        fields.put("summary","test from selenium");
-        fields.put("issuetype",issueType);
-        fields.put("project",project);
+        JsonObject fields = new JsonObject();
+        fields.addProperty("summary","test from selenium");
+        fields.add("issuetype",issueType);
+        fields.add("project",project);
 
-        JSONObject createIssue = new JSONObject();
-        createIssue.put("fields",fields);
-        return createIssue;
+        JsonObject createIssue = new JsonObject();
+        createIssue.add("fields",fields);
+        return new Gson().toJson(createIssue);
     }
 }

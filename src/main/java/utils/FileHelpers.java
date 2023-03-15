@@ -1,10 +1,16 @@
 
 package utils;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.apache.commons.io.FileDeleteStrategy;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class FileHelpers {
@@ -51,6 +57,21 @@ public class FileHelpers {
             return value;
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public static String readJsonFile(String key, String pathFile) throws IOException {
+
+        String fileName = pathFile;
+        Path path = Paths.get(fileName);
+
+        try (Reader reader = Files.newBufferedReader(path,
+                StandardCharsets.UTF_8)) {
+
+            JsonParser parser = new JsonParser();
+            JsonElement tree = parser.parse(reader);
+            JsonObject value = tree.getAsJsonObject();
+            return value.get(key).getAsString();
         }
     }
 

@@ -1,6 +1,7 @@
 package steps;
 
 
+import com.google.gson.JsonObject;
 import constants.FrameworkConstants;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,7 +11,6 @@ import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.log4j.Logger;
-import org.json.simple.JSONObject;
 import org.testng.asserts.SoftAssert;
 import utils.ExcelUtils;
 
@@ -67,19 +67,19 @@ public class API {
     public void sendPostMethodWithModule(String arg0) throws IOException {
         RestAssured.baseURI = FrameworkConstants.BASE_REQRES_URL;
         RequestSpecification httpRequest = RestAssured.given();
-        JSONObject requestParams = new JSONObject();
+        JsonObject requestParams = new JsonObject();
 
         excelUtils.setExcelFile(FrameworkConstants.EXCEL_DATAAPI_FILE_PATH, "Sheet1");
         for (int i = 1; i <= excelUtils.getRowCountInSheet(); i++) {
             logger.info(excelUtils.getCellData(i, 0));
             logger.info(excelUtils.getCellData(i, 1));
             logger.info(excelUtils.getCellData(i, 2));
-            requestParams.put("name", excelUtils.getCellData(i, 1));
-            requestParams.put("job", excelUtils.getCellData(i, 2));
+            requestParams.addProperty("name", excelUtils.getCellData(i, 1));
+            requestParams.addProperty("job", excelUtils.getCellData(i, 2));
             httpRequest.header("Content-Type", excelUtils.getCellData(i, 0));
         }
 
-        httpRequest.body(requestParams.toJSONString());
+        httpRequest.body(requestParams.toString());
         postResponse = httpRequest.request(Method.POST, arg0);
 //        postResponse.prettyPrint();
         String responseBody = postResponse.getBody().asString();
@@ -105,7 +105,7 @@ public class API {
     public void testDatadrivenFakeresapi() throws IOException {
         RestAssured.baseURI = "https://fakerestapi.azurewebsites.net/api/v1/";
         RequestSpecification httpRequest = RestAssured.given();
-        JSONObject requestParams = new JSONObject();
+        JsonObject requestParams = new JsonObject();
 
         excelUtils.setExcelFile(FrameworkConstants.EXCEL_DATAAPI_FILE_PATH, "Sheet2");
         for (int i = 1; i <= excelUtils.getRowCountInSheet(); i++) {
@@ -113,19 +113,19 @@ public class API {
             logger.info(excelUtils.getCellData(i, 1));
             logger.info(excelUtils.getCellData(i, 2));
             logger.info(excelUtils.getCellData(i, 3));
-            requestParams.put("id", excelUtils.getCellData(i, 0));
-            requestParams.put("title", excelUtils.getCellData(i, 1));
-            requestParams.put("dueDate", excelUtils.getCellData(i, 2));
+            requestParams.addProperty("id", excelUtils.getCellData(i, 0));
+            requestParams.addProperty("title", excelUtils.getCellData(i, 1));
+            requestParams.addProperty("dueDate", excelUtils.getCellData(i, 2));
             boolean completed;
             if (excelUtils.getCellData(i, 3) == "TRUE") {
                 completed = true;
-                requestParams.put("completed", completed);
+                requestParams.addProperty("completed", completed);
             } else {
                 completed = false;
-                requestParams.put("completed", completed);
+                requestParams.addProperty("completed", completed);
             }
             httpRequest.header("Content-Type", "application/json");
-            httpRequest.body(requestParams.toJSONString());
+            httpRequest.body(requestParams.toString());
             postResponse = httpRequest.request(Method.POST, "Activities");
             String responseBody = postResponse.getBody().asString();
             postListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
@@ -145,16 +145,16 @@ public class API {
         logger.info("row:" + excelUtils.getRowCountInSheet());
         RestAssured.baseURI = "https://reqres.in/api/";
         RequestSpecification httpRequest = RestAssured.given();
-        JSONObject requestParams = new JSONObject();
+        JsonObject requestParams = new JsonObject();
             for (int i = 1; i <= excelUtils.getRowCountInSheet(); i++) {
                 logger.info("count:" + excelUtils.getCellData(i, 2));
                 logger.info(excelUtils.getCellData(i, 0));
                 logger.info(excelUtils.getCellData(i, 1));
-                requestParams.put("name", excelUtils.getCellData(i, 0));
-                requestParams.put("job", excelUtils.getCellData(i, 1));
+                requestParams.addProperty("name", excelUtils.getCellData(i, 0));
+                requestParams.addProperty("job", excelUtils.getCellData(i, 1));
 
                 httpRequest.header("Content-Type", "application/json");
-                httpRequest.body(requestParams.toJSONString());
+                httpRequest.body(requestParams.toString());
                 postResponse = httpRequest.request(Method.POST, "users");
                 String responseBody = postResponse.getBody().asString();
                 postListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));

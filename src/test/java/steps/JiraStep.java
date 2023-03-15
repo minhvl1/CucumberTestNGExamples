@@ -1,6 +1,7 @@
 package steps;
 
 
+import com.google.gson.*;
 import models.IssueJira;
 import models.RequestCapability;
 import io.cucumber.java.en.Given;
@@ -10,15 +11,13 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.codec.binary.Base64;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import utils.FileHelpers;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
@@ -83,29 +82,26 @@ public class JiraStep implements RequestCapability {
 
         response = request.body(IssueJira.CreateIssueJiraBody()).post(issuePath);
         response.prettyPrint();
+
     }
 
     @Then("Give id issue")
     public void giveIdIssue() throws IOException {
         Map<String,String> createIssueResponse = JsonPath.from(response.asString()).get();
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("self", createIssueResponse.get("self"));
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("self", createIssueResponse.get("self"));
         FileWriter file = new FileWriter("src/test/resources/testdata/Jira.json");
-        file.write(jsonObject.toJSONString());
+        file.write(jsonObject.toString());
         file.close();
 
     }
 
     @Given("Delete issue")
-    public void deleteIssue() throws IOException, ParseException {
+    public void deleteIssue() throws IOException {
         byte[] encodedCred = Base64.encodeBase64(creDential.getBytes());
         String encodedCreStr = new String(encodedCred);
 
 
-        Object o = new JSONParser().parse(new FileReader("src/test/resources/testdata/Jira.json"));
-        JSONObject j = (JSONObject) o;
-        String Name = (String) j.get("self");
-        System.out.println(Name);
 
         //create request
         RequestSpecification request = RestAssured.given();
@@ -113,10 +109,12 @@ public class JiraStep implements RequestCapability {
         request.header(defaultHeader);
         request.header(RequestCapability.getAuthenticatedHeader(encodedCreStr));
 
+        String Name = FileHelpers.readJsonFile("self","src/test/resources/testdata/Jira.json");
+
         response = request.delete(Name);
         System.out.println(response.statusCode());
 
-
-
     }
+
+
 }
