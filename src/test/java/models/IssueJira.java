@@ -20,6 +20,7 @@ public class IssueJira {
 
         JsonObject createIssue = new JsonObject();
         createIssue.add("fields",fields);
-        return new Gson().toJson(createIssue);
+//        return new Gson().toJson(createIssue);
+        return createIssue.toString();
     }
 }
