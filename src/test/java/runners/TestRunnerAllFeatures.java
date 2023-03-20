@@ -60,10 +60,11 @@ public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
                 , CucumberListener.count_skippedTCs);
     }
     @BeforeSuite
-    public void cleanReport() throws IOException {
+    public void cleanReport(){
         logger.info("================ BEFORE SUITE ================");
         logger.info("Environment:"+ FrameworkConstants.ENVIRONMENT);
         fileHelpers.cleanAllureReportFiles();
         fileHelpers.cleanExtentReportFiles();
+        BaseTest.addExtentReportEnvironment();
     }
 }
