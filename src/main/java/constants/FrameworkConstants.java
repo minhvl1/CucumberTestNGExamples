@@ -13,6 +13,7 @@ public final class FrameworkConstants {
     private FrameworkConstants() {
     }
     public static final String PROJECT_PATH = Helpers.getCurrentDir();
+    public static final String ENVIRONMENT = PropertiesHelpers.getEnvironment("ENV");
     public static final Duration WAIT_DEFAULT = Duration.ofSeconds(Long.parseLong(PropertiesHelpers.getValue("WAIT_DEFAULT")));
     public static final String REPORT_TITLE = PropertiesHelpers.getEnvironment("REPORT_TITLE");
     public static final String AUTHOR =PropertiesHelpers.getEnvironment("AUTHOR");

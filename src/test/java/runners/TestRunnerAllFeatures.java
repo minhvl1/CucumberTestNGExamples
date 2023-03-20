@@ -1,15 +1,16 @@
 package runners;
+
+import common.BaseTest;
+import constants.FrameworkConstants;
 import cucumberHooks.CucumberListener;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 import io.cucumber.testng.CucumberOptions;
 import org.apache.log4j.Logger;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import steps.API;
 import utils.*;
+
 
 import java.io.IOException;
 
@@ -61,7 +62,7 @@ public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
     @BeforeSuite
     public void cleanReport() throws IOException {
         logger.info("================ BEFORE SUITE ================");
-        logger.info("Environment:"+ PropertiesHelpers.getEnvironment("ENV"));
+        logger.info("Environment:"+ FrameworkConstants.ENVIRONMENT);
         fileHelpers.cleanAllureReportFiles();
         fileHelpers.cleanExtentReportFiles();
     }
