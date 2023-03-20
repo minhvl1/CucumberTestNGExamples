@@ -3,10 +3,12 @@ package runners;
 import common.BaseTest;
 import constants.FrameworkConstants;
 import cucumberHooks.CucumberListener;
+import cucumberHooks.Hooks;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 import io.cucumber.testng.CucumberOptions;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import steps.API;
 import utils.*;
@@ -59,12 +61,18 @@ public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
                 , CucumberListener.count_failedTCs
                 , CucumberListener.count_skippedTCs);
     }
+    WebDriver driver;
     @BeforeSuite
     public void cleanReport(){
         logger.info("================ BEFORE SUITE ================");
         logger.info("Environment:"+ FrameworkConstants.ENVIRONMENT);
         fileHelpers.cleanAllureReportFiles();
         fileHelpers.cleanExtentReportFiles();
-        BaseTest.addExtentReportEnvironment();
+    }
+
+    @BeforeSuite
+    public void generateExtentReport(){
+        this.driver = Hooks.openAndQuitBrowser();
+        BaseTest.addExtentReportEnvironment(driver);
     }
 }

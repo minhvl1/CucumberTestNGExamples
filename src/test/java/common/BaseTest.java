@@ -4,8 +4,10 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.service.ExtentService;
 import constants.FrameworkConstants;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -17,12 +19,14 @@ public class BaseTest {
         return driver.findElement(By.xpath(xpath));
     }
 
-    public static void addExtentReportEnvironment() {
+    public static void addExtentReportEnvironment(WebDriver driver) {
+        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
         ExtentReports extentReports = ExtentService.getInstance();
         extentReports.setSystemInfo("OS", System.getProperty("os.name"));
         extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
         extentReports.setSystemInfo("Env", FrameworkConstants.ENVIRONMENT);
         extentReports.setSystemInfo("Base URL", FrameworkConstants.BASE_FAKERESAPI_URL);
+        extentReports.setSystemInfo("Browser", cap.getBrowserName()+" "+cap.getBrowserVersion());
     }
     public void waitForElementClickable(WebDriver driver,String xpath){
         WebDriverWait explicitWait = new WebDriverWait(driver,longTimeout);
