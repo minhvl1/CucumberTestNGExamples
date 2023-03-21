@@ -1,4 +1,4 @@
-@Feature3
+@FeatureDemoQA
   Feature: Demo QA site
 
     @RadioButton

@@ -27,8 +27,8 @@ public class JiraStep implements RequestCapability {
     String baseUrlJira = "https://vlminh.atlassian.net";
     String jiraPath= "/rest/api/3/project/AB";
     String issuePath="/rest/api/3/issue";
-    String email = "minhvu1234567yahoo@gmail.com";
-    String apiToken = "ATATT3xFfGF0XnDA5e8iYNJFwaD7cCyEuav4Baax36Uyz9iRED5zqCWPG2f5ir-fe-i6wZfOOlRCbOqCp9C5Ypq1eY0pqSwSCdyVYzrCugTsdOzkA5D_WLWAfdHnMheyMCutUFp7uSUt__Si7BBtt_dCxO1PXvmoMtolaygqoJ4Ac3aBy_wl-As=0E5596A6";
+    String email = "";
+    String apiToken = "";
     String creDential = email+":"+apiToken;
 
 

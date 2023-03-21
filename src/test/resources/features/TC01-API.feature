@@ -1,4 +1,4 @@
-@Feature4
+@FeatureApi
 Feature: Demo API
 
   @getMethodApi
