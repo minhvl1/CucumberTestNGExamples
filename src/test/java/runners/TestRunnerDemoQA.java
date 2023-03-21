@@ -16,7 +16,7 @@ import java.io.IOException;
 
 @Test
 @CucumberOptions(
-        features = "src/test/resources/features/DemoQa.feature",
+        features = "src/test/resources/features/TC03-DemoQa.feature",
         glue = {"steps","cucumberHooks"},
         plugin = {"cucumberHooks.CucumberListener",
                 "pretty",
