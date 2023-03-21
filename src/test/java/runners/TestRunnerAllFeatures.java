@@ -28,7 +28,7 @@ import java.io.IOException;
                 "json:target/cucumber-reports/cucumber-reports.json",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
          monochrome = true
-//        ,tags = "~@DeleteIssue"
+        ,tags = "not @Jira and not @FeatureApi"
 )
 
 public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
