@@ -1,17 +1,18 @@
 package runners;
+
+import common.BaseTest;
+import constants.FrameworkConstants;
 import cucumberHooks.CucumberListener;
+import cucumberHooks.Hooks;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 import io.cucumber.testng.CucumberOptions;
 import org.apache.log4j.Logger;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.*;
 import steps.API;
-import utils.EmailSendUtils;
-import utils.FileHelpers;
-import utils.PropertiesHelpers;
+import utils.*;
+
 
 import java.io.IOException;
 
@@ -27,7 +28,7 @@ import java.io.IOException;
                 "json:target/cucumber-reports/cucumber-reports.json",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
          monochrome = true
-//        ,tags = "not @Feature5"
+//        ,tags = "~@DeleteIssue"
 )
 
 public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
@@ -50,12 +51,28 @@ public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
                 , CucumberListener.count_passedTCs
                 , CucumberListener.count_failedTCs
                 , CucumberListener.count_skippedTCs);
+
+        SlackIntergration.sendResultRunnerToSlack(CucumberListener.count_totalTCs
+                , CucumberListener.count_passedTCs
+                , CucumberListener.count_failedTCs
+                , CucumberListener.count_skippedTCs);
+        TeamsIntegration.sendMessageToTeams(CucumberListener.count_totalTCs
+                , CucumberListener.count_passedTCs
+                , CucumberListener.count_failedTCs
+                , CucumberListener.count_skippedTCs);
     }
+    WebDriver driver;
     @BeforeSuite
-    public void cleanReport() throws IOException {
+    public void cleanReport(){
         logger.info("================ BEFORE SUITE ================");
-        logger.info("Environment:"+ PropertiesHelpers.getEnvironment("ENV"));
+        logger.info("Environment:"+ FrameworkConstants.ENVIRONMENT);
         fileHelpers.cleanAllureReportFiles();
         fileHelpers.cleanExtentReportFiles();
+    }
+
+    @BeforeSuite
+    public void generateExtentReport(){
+        this.driver = Hooks.openAndQuitBrowser();
+        BaseTest.addExtentReportEnvironment(driver);
     }
 }

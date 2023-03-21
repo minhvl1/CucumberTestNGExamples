@@ -59,6 +59,7 @@ public class Hooks {
                         WebDriverManager.chromedriver().setup();
                         ChromeOptions options = new ChromeOptions();
                         options.addArguments("start-maximized");
+                        options.addArguments("--remote-allow-origins=*");
                         driver = new ChromeDriver(options);
                         break;
 
@@ -68,6 +69,7 @@ public class Hooks {
                         chromeOptionsoptions.addArguments("--headless");
                         chromeOptionsoptions.addArguments("--disable-dev-shm-usage");
                         chromeOptionsoptions.addArguments("--no-sandbox");
+                        chromeOptionsoptions.addArguments("--remote-allow-origins=*");
                         driver = new ChromeDriver(chromeOptionsoptions);
                         break;
 
