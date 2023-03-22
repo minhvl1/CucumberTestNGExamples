@@ -25,19 +25,19 @@ public class DemoQa {
 
     @Given("Go to demoqa url")
     public void goToDemoqaUrl() {
-        logger.log(NOTICE, "GO TO DEMO QA URL");
+        logger.log(NOTICE, "Go to QA url");
         driver.get("https://demoqa.com/radio-button");
     }
 
     @When("check {string} radio button")
     public void checkArgRadioButton(String arg0) {
-        logger.log(NOTICE, "CHECK RADIO BUTTON");
+        logger.log(NOTICE, "Click to "+ arg0 +" button");
         demoQaActions.clickToRadioButton(arg0.toLowerCase());
     }
 
     @Then("See result contain {string}")
     public void seeResultContainArg(String arg0) {
-        logger.log(NOTICE, "SEE RESULT CONTAIN EXPECT STRING");
+        logger.log(NOTICE, "Verify result should contain "+arg0);
         demoQaActions.resultMessageContainText(arg0);
     }
 
