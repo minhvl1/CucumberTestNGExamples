@@ -41,7 +41,7 @@ public class Hooks {
 
                 switch (browser) {
                     case "firefox":
-//                        WebDriverManager.firefoxdriver().setup();
+                        WebDriverManager.firefoxdriver().setup();
                         FirefoxOptions firefoxOptions = new FirefoxOptions();
 //                        firefoxOptions.addArguments("start-maximized");
 //                        firefoxOptions.addArguments("window-size=1920x1080");
@@ -49,7 +49,7 @@ public class Hooks {
                         break;
 
                     case "hfirefox":
-//                        WebDriverManager.firefoxdriver().setup();
+                        WebDriverManager.firefoxdriver().setup();
                         FirefoxOptions hfirefoxOptions = new FirefoxOptions();
                         hfirefoxOptions.addArguments("--headless");
                         driver = new FirefoxDriver(hfirefoxOptions);
@@ -74,14 +74,14 @@ public class Hooks {
                         break;
 
                     case "hedge":
-//                        WebDriverManager.edgedriver().setup();
+                        WebDriverManager.edgedriver().setup();
                         EdgeOptions hegdeoptions = new EdgeOptions();
                         hegdeoptions.addArguments("--headless");
                         driver = new EdgeDriver(hegdeoptions);
                         break;
 
                     case "edge":
-//                        WebDriverManager.edgedriver().setup();
+                        WebDriverManager.edgedriver().setup();
                         EdgeOptions edgeOptions = new EdgeOptions();
                         edgeOptions.addArguments("start-maximized");
                         driver = new EdgeDriver(edgeOptions);

@@ -22,11 +22,14 @@ public class BaseTest {
     public static void addExtentReportEnvironment(WebDriver driver) {
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
         ExtentReports extentReports = ExtentService.getInstance();
+
+        extentReports.setSystemInfo("Author", FrameworkConstants.AUTHOR);
+        extentReports.setSystemInfo("Report Title", FrameworkConstants.REPORT_TITLE);
         extentReports.setSystemInfo("OS", System.getProperty("os.name"));
         extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
-        extentReports.setSystemInfo("Env", FrameworkConstants.ENVIRONMENT);
-        extentReports.setSystemInfo("Base URL", FrameworkConstants.BASE_FAKERESAPI_URL);
+        extentReports.setSystemInfo("Environment", FrameworkConstants.ENVIRONMENT);
         extentReports.setSystemInfo("Browser", cap.getBrowserName()+" "+cap.getBrowserVersion());
+
     }
     public void waitForElementClickable(WebDriver driver,String xpath){
         WebDriverWait explicitWait = new WebDriverWait(driver,longTimeout);

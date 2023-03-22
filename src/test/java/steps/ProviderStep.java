@@ -1,7 +1,8 @@
 package steps;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import utils.PropertiesHelpers;
 
-import org.apache.log4j.Logger;
 import io.cucumber.java.en.Given;
 
 import java.io.IOException;
@@ -11,7 +12,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class ProviderStep {
 //    WebDriver driver;
-private static final Logger logger = Logger.getLogger(API.class);
+private static final Logger logger = LogManager.getLogger(ProviderStep.class);
 //    public ProviderStep() {
 //        this.driver = Hooks.openAndQuitBrowser();
 

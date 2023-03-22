@@ -1,5 +1,6 @@
 package runners;
 
+
 import common.BaseTest;
 import constants.FrameworkConstants;
 import cucumberHooks.CucumberListener;
@@ -7,14 +8,15 @@ import cucumberHooks.Hooks;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 import io.cucumber.testng.CucumberOptions;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+
 import steps.API;
 import utils.*;
 
-
-import java.io.IOException;
 
 
 @Test
@@ -33,7 +35,7 @@ import java.io.IOException;
 
 public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
     static FileHelpers fileHelpers = new FileHelpers();
-    private static final Logger logger = Logger.getLogger(API.class);
+    private static final Logger logger = LogManager.getLogger(TestRunnerAllFeatures.class);
     @Override
     @DataProvider(parallel = false)
     public Object[][] scenarios() {
@@ -75,4 +77,5 @@ public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
         this.driver = Hooks.openAndQuitBrowser();
         BaseTest.addExtentReportEnvironment(driver);
     }
+
 }

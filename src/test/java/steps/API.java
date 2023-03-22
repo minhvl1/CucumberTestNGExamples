@@ -10,8 +10,11 @@ import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.asserts.SoftAssert;
+
 import utils.ExcelUtils;
 
 import java.io.IOException;
@@ -30,7 +33,7 @@ public class API {
     Response postResponse;
 
     static ExcelUtils excelUtils = new ExcelUtils();
-    private static final Logger logger = Logger.getLogger(API.class);
+    private static final Logger logger = LogManager.getLogger(API.class);
 
     public API() {
         softAssert.assertAll();

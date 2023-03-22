@@ -12,12 +12,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.codec.binary.Base64;
 import utils.FileHelpers;
-
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
@@ -55,11 +50,11 @@ public class JiraStep implements RequestCapability {
 
             Map<String, List<Map<String,String>>> projectInfo = JsonPath.from(response.asString()).get();
             List<Map<String,String>> issueTypes = projectInfo.get("issueTypes");
-    //        for (Map<String, String> issueType: issueTypes) {
-    //            System.out.println(issueType.get("id"));
-    //            System.out.println(issueType.get("name"));
-    //            System.out.println("=====================");
-    //        }
+//            for (Map<String, String> issueType: issueTypes) {
+//                System.out.println(issueType.get("id"));
+//                System.out.println(issueType.get("name"));
+//                System.out.println("=====================");
+//            }
 
             Map<String, Map<String, Map<String,String>>>projectTypeKe = JsonPath.from(response.asString()).get();
             Map<String, Map<String,String>> lead = projectTypeKe.get("lead");
