@@ -3,6 +3,7 @@ package common;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.service.ExtentService;
 import constants.FrameworkConstants;
+import org.apache.logging.log4j.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +19,7 @@ public class BaseTest {
     public WebElement getElementByXpath(WebDriver driver,String xpath){
         return driver.findElement(By.xpath(xpath));
     }
-
+    public static final Level NOTICE = Level.forName("NOTICE", 450);
     public static void addExtentReportEnvironment(WebDriver driver) {
         Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
         ExtentReports extentReports = ExtentService.getInstance();

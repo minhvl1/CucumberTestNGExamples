@@ -56,10 +56,16 @@ public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
                 , CucumberListener.count_passedTCs
                 , CucumberListener.count_failedTCs
                 , CucumberListener.count_skippedTCs);
+
         TeamsIntegration.sendMessageToTeams(CucumberListener.count_totalTCs
                 , CucumberListener.count_passedTCs
                 , CucumberListener.count_failedTCs
                 , CucumberListener.count_skippedTCs);
+
+        logger.log(BaseTest.NOTICE,"Total:" + CucumberListener.count_totalTCs);
+        logger.log(BaseTest.NOTICE,"Pass:" + CucumberListener.count_passedTCs);
+        logger.log(BaseTest.NOTICE,"Failed:" + CucumberListener.count_failedTCs);
+        logger.log(BaseTest.NOTICE,"Skipped:" + CucumberListener.count_skippedTCs);
     }
 
     WebDriver driver;
