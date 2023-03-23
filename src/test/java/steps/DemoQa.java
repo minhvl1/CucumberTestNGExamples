@@ -18,6 +18,7 @@ public class DemoQa {
     private DemoQaActions demoQaActions;
     private static final Logger logger = LogManager.getLogger(DemoQa.class);
     final Level NOTICE = Level.forName("NOTICE", 450);
+
     public DemoQa() {
         this.driver = Hooks.openAndQuitBrowser();
         demoQaActions = new DemoQaActions(driver);
@@ -31,13 +32,13 @@ public class DemoQa {
 
     @When("check {string} radio button")
     public void checkArgRadioButton(String arg0) {
-        logger.log(NOTICE, "Click to "+ arg0 +" button");
+        logger.log(NOTICE, "Click to " + arg0 + " button");
         demoQaActions.clickToRadioButton(arg0.toLowerCase());
     }
 
     @Then("See result contain {string}")
     public void seeResultContainArg(String arg0) {
-        logger.log(NOTICE, "Verify result should contain "+arg0);
+        logger.log(NOTICE, "Verify result should contain " + arg0);
         demoQaActions.resultMessageContainText(arg0);
     }
 

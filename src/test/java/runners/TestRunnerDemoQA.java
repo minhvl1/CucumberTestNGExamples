@@ -17,20 +17,21 @@ import java.io.IOException;
 @Test
 @CucumberOptions(
         features = "src/test/resources/features/TC03-DemoQa.feature",
-        glue = {"steps","cucumberHooks"},
+        glue = {"steps", "cucumberHooks"},
         plugin = {"cucumberHooks.CucumberListener",
                 "pretty",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
                 "html:target/cucumber-reports/cucumber-reports.html",
                 "json:target/cucumber-reports/cucumber-reports.json",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-         monochrome = true,
+        monochrome = true,
         tags = "@Feature3"
 )
 
 public class TestRunnerDemoQA extends AbstractTestNGCucumberTests {
     static FileHelpers fileHelpers = new FileHelpers();
     private static final Logger logger = LogManager.getLogger(TestRunnerDemoQA.class);
+
     @Override
     @DataProvider(parallel = false)
     public Object[][] scenarios() {
@@ -58,10 +59,11 @@ public class TestRunnerDemoQA extends AbstractTestNGCucumberTests {
                 , CucumberListener.count_failedTCs
                 , CucumberListener.count_skippedTCs);
     }
+
     @BeforeSuite
     public void cleanReport() throws IOException {
         logger.info("================ BEFORE SUITE ================");
-        logger.info("Environment:"+ PropertiesHelpers.getEnvironment("ENV"));
+        logger.info("Environment:" + PropertiesHelpers.getEnvironment("ENV"));
         fileHelpers.cleanAllureReportFiles();
         fileHelpers.cleanExtentReportFiles();
     }

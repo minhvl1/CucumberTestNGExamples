@@ -1,4 +1,5 @@
 package steps;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import utils.PropertiesHelpers;
@@ -11,8 +12,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 
 public class ProviderStep {
-//    WebDriver driver;
-private static final Logger logger = LogManager.getLogger(ProviderStep.class);
+    //    WebDriver driver;
+    private static final Logger logger = LogManager.getLogger(ProviderStep.class);
 //    public ProviderStep() {
 //        this.driver = Hooks.openAndQuitBrowser();
 
@@ -64,8 +65,8 @@ private static final Logger logger = LogManager.getLogger(ProviderStep.class);
 //    }
     @Given("Test")
     public void test() {
-    logger.info("Enviroment:"+PropertiesHelpers.getEnvironment("ENV"));
-        }
+        logger.info("Enviroment:" + PropertiesHelpers.getEnvironment("ENV"));
     }
+}
 
 
