@@ -44,7 +44,7 @@ Run by tags:
 
 ![image](https://user-images.githubusercontent.com/67543695/227717091-555914e8-c23e-45ba-9eb7-7d55f5542dce.png)
 
-![image](https://user-images.githubusercontent.com/67543695/227716888-da392d37-c7d0-49b8-8bf0-e743ea68a4c8.png)
+![image](https://user-images.githubusercontent.com/67543695/227717115-fc0103b7-09b7-4463-b398-e4b606b580de.png)
 
 3. Allure Report
 
