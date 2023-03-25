@@ -5,7 +5,7 @@
     <!--        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>-->
     <!--    </listeners>-->
 
-    <test name = "Search on google">
+    <test name = "Runner all Feature">
         <classes>
             <class name = "runners.TestRunnerAllFeatures"/>
         </classes>

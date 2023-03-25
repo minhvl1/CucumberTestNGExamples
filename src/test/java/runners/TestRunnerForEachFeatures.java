@@ -3,12 +3,12 @@ package runners;
 import cucumberHooks.CucumberListener;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import steps.API;
 import utils.*;
 
 import java.io.IOException;
@@ -30,7 +30,7 @@ import java.io.IOException;
 
 public class TestRunnerForEachFeatures extends AbstractTestNGCucumberTests {
     static FileHelpers fileHelpers = new FileHelpers();
-    private static final Logger logger = Logger.getLogger(API.class);
+    private static final Logger logger = LogManager.getLogger(TestRunnerForEachFeatures.class);
     @Override
     @DataProvider(parallel = false)
     public Object[][] scenarios() {

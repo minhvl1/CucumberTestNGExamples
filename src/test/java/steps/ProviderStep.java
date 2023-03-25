@@ -1,7 +1,9 @@
 package steps;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import utils.PropertiesHelpers;
 
-import org.apache.log4j.Logger;
 import io.cucumber.java.en.Given;
 
 import java.io.IOException;
@@ -10,8 +12,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 
 public class ProviderStep {
-//    WebDriver driver;
-private static final Logger logger = Logger.getLogger(API.class);
+    //    WebDriver driver;
+    private static final Logger logger = LogManager.getLogger(ProviderStep.class);
 //    public ProviderStep() {
 //        this.driver = Hooks.openAndQuitBrowser();
 
@@ -63,8 +65,8 @@ private static final Logger logger = Logger.getLogger(API.class);
 //    }
     @Given("Test")
     public void test() {
-    logger.info("Enviroment:"+PropertiesHelpers.getEnvironment("ENV"));
-        }
+        logger.info("Enviroment:" + PropertiesHelpers.getEnvironment("ENV"));
     }
+}
 
 

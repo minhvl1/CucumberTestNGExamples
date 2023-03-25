@@ -1,4 +1,7 @@
 ﻿# GB-Demo
+### V1.2
+1. Migrate log4j
+2. Custom log level
 
 ### V1.1
 1. Add multiple configure file for multiple environment (default: testing env)
@@ -10,13 +13,14 @@
 1. Run the parallel Scenario on feature file
 2. Cucumber Report
 3. Extent Report
-4. Allure Report
-5. Send Mail after the run test (Report information and HTML file attachment)
-6. Write Log to file
-7. Screenshot test case
-8. Read data test from Excel file
-9. Base function in the package: utils, helpers
-10. Sample test feature
+4. Spark Report
+5. Allure Report
+6. TestNG Report
+7. Send Mail after the run test (Report information and HTML file attachment)
+8. Logging(to console and file), custom log level
+9. Screenshot test case
+10. Data driven/Dataprovider
+11. Multiple profile for each enviroment 
 
 ### HOW TO USE
 1. Default run:
@@ -31,35 +35,46 @@ Run by tags:
 
 `mvn verify -D"cucumber.filter.tags=@debug1 or @debug2"`
 
-3. Config in config.properties(src/test/resources/config/config.properties)
+### FEATURES
+1. Config in config.properties(src/test/resources/config/config.properties)
 
 ![image](https://user-images.githubusercontent.com/67543695/220126487-781ba264-760d-4216-a69b-d2bba655d443.png)
 
-4. Extent Report
+2. Extent Report
 
-![image](https://user-images.githubusercontent.com/67543695/218368035-87683f26-cbf7-404e-8912-abbb8ef5c410.png)
+![image](https://user-images.githubusercontent.com/67543695/227717091-555914e8-c23e-45ba-9eb7-7d55f5542dce.png)
 
-5. Allure Report
+![image](https://user-images.githubusercontent.com/67543695/227717115-fc0103b7-09b7-4463-b398-e4b606b580de.png)
 
-![image](https://user-images.githubusercontent.com/67543695/218368526-6e355f9f-06f2-4d7a-bc3e-bf8622a947ef.png)
+3. Allure Report
 
-6. Cucumber Report
+![image](https://user-images.githubusercontent.com/67543695/227717165-5cfea855-edc3-4e42-8d2e-b655f8a851e6.png)
+
+![image](https://user-images.githubusercontent.com/67543695/227717182-e07b41ee-717d-4034-af3c-96f68ad7b83d.png)
+
+4. Cucumber Report
 
 ![image](https://user-images.githubusercontent.com/67543695/220126109-3ad6ea4d-bae4-4a91-be95-43fb73cd1fd5.png)
 
-7. Pdf Report
+5. Pdf Report
 
 ![image](https://user-images.githubusercontent.com/67543695/218368288-8010dba5-53ff-4d80-a84b-2017cab19de7.png)
 
-8. Write log to file
+6. TestNG Reprt
 
-![image](https://user-images.githubusercontent.com/67543695/220125765-b487abdb-c413-491b-9e5a-ed6541fba9e8.png)
+![image](https://user-images.githubusercontent.com/67543695/227717037-61cea885-d58b-4642-afd5-cbc053a0a957.png)
 
-9. Send message to Slack
+7. Logging
+
+![image](https://user-images.githubusercontent.com/67543695/227716811-40c9f251-1c47-43c3-9a1a-a188e2a4e03a.png)
+
+![image](https://user-images.githubusercontent.com/67543695/227716832-19a0579b-3888-4b8a-85fd-2e20e332fd8a.png)
+
+8. Send message to Slack
 
 ![image](https://user-images.githubusercontent.com/107853696/218916459-41388bca-49d0-438f-8b4c-d1c48c883f69.png)
 
-10. Send message to Microsoft Teams
+9. Send message to Microsoft Teams
 
 ![image](https://user-images.githubusercontent.com/67543695/220000344-2344aca0-ee10-4c8e-be50-2c17eac04011.png)
 

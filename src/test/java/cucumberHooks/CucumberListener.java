@@ -17,12 +17,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CucumberListener implements EventListener {
-    private ExtentSparkReporter spark;
-    private ExtentReports extent;
-
-    Map<String, ExtentTest> feature = new HashMap<String, ExtentTest>();
-    ExtentTest scenario;
-    ExtentTest step;
+//    private ExtentSparkReporter spark;
+//    private ExtentReports extent;
+//
+//    Map<String, ExtentTest> feature = new HashMap<String, ExtentTest>();
+//    ExtentTest scenario;
+//    ExtentTest step;
 
     public static int count_totalTCs;
     public static int count_passedTCs;
@@ -46,7 +46,6 @@ public class CucumberListener implements EventListener {
         publisher.registerHandlerFor(TestCaseFinished.class, this::ScenarioFinished);
         publisher.registerHandlerFor(TestStepStarted.class, this::stepStarted);
         publisher.registerHandlerFor(TestStepFinished.class, this::stepFinished);
-
     }
 
     /*
@@ -58,17 +57,17 @@ public class CucumberListener implements EventListener {
     // Here we create the reporter
     private void runStarted(TestRunStarted event) {
 //        spark = new ExtentSparkReporter("ExtentReport" + File.separator +"reports" + File.separator + "ExtentReport.html");
-        spark = new ExtentSparkReporter("ExtentReport");
-
-        extent = new ExtentReports();
-        // Create extent report instance with spark reporter
-        extent.attachReporter(spark);
-        spark.config().setTheme(Theme.STANDARD);
-        spark.config().setDocumentTitle(FrameworkConstants.REPORT_TITLE);
-        spark.config().setReportName(FrameworkConstants.REPORT_TITLE);
-        extent.setSystemInfo("Framework Name", FrameworkConstants.REPORT_TITLE);
-        extent.setSystemInfo("Author", FrameworkConstants.AUTHOR);
-        System.out.println("Extent Reports is installed.");
+//        spark = new ExtentSparkReporter("ExtentReport");
+//
+//        extent = new ExtentReports();
+//        // Create extent report instance with spark reporter
+//        extent.attachReporter(spark);
+//        spark.config().setTheme(Theme.STANDARD);
+//        spark.config().setDocumentTitle(FrameworkConstants.REPORT_TITLE);
+//        spark.config().setReportName(FrameworkConstants.REPORT_TITLE);
+//        extent.setSystemInfo("Framework Name", FrameworkConstants.REPORT_TITLE);
+//        extent.setSystemInfo("Author", FrameworkConstants.AUTHOR);
+//        System.out.println("Extent Reports is installed.");
 
     }
 
@@ -80,30 +79,30 @@ public class CucumberListener implements EventListener {
     // This event is triggered when feature file is read
     // here we create the feature node
     private void featureRead(TestSourceRead event) {
-        String featureSource = event.getUri().toString();
-        String featureName = featureSource.split(".*/")[1];
+//        String featureSource = event.getUri().toString();
+//        String featureName = featureSource.split(".*/")[1];
 
-        if (feature.get(featureSource) == null) {
-
-            feature.putIfAbsent(featureSource, extent.createTest(featureName));
-        }
+//        if (feature.get(featureSource) == null) {
+//
+//            feature.putIfAbsent(featureSource, extent.createTest(featureName));
+//        }
     }
 
     // This event is triggered when Test Case is started
     // here we create the scenario node
     private void ScenarioStarted(TestCaseStarted event) {
-        String featureName = event.getTestCase().getUri().toString();
-
-        scenario = feature.get(featureName).createNode(event.getTestCase().getName());
+//        String featureName = event.getTestCase().getUri().toString();
+//
+//        scenario = feature.get(featureName).createNode(event.getTestCase().getName());
 
         count_totalTCs = count_totalTCs + 1;
     }
 
     private void ScenarioFinished(TestCaseFinished event) {
-        String featureName = event.getTestCase().getUri().toString();
+//        String featureName = event.getTestCase().getUri().toString();
 
-        scenario = feature.get(featureName).createNode(event.getTestCase().getName());
-        
+//        scenario = feature.get(featureName).createNode(event.getTestCase().getName());
+
         if (event.getResult().getStatus().toString() == "PASSED") {
             count_passedTCs = count_passedTCs + 1;
         } else if (event.getResult().getStatus().toString() == "SKIPPED") {
@@ -136,7 +135,7 @@ public class CucumberListener implements EventListener {
 
         }
 
-        step = scenario.createNode(Given.class, keyword + " " + stepName);
+//        step = scenario.createNode(Given.class, keyword + " " + stepName);
     }
 
     // This is triggered when TestStep is finished
