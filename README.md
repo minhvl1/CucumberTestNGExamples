@@ -48,7 +48,9 @@ Run by tags:
 
 3. Allure Report
 
-![image](https://user-images.githubusercontent.com/67543695/227716869-67d3a2d9-7332-4504-b3a0-04b4669086e9.png)
+![image](https://user-images.githubusercontent.com/67543695/227717165-5cfea855-edc3-4e42-8d2e-b655f8a851e6.png)
+
+![image](https://user-images.githubusercontent.com/67543695/227717182-e07b41ee-717d-4034-af3c-96f68ad7b83d.png)
 
 4. Cucumber Report
 
