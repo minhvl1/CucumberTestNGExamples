@@ -42,7 +42,7 @@ Run by tags:
 
 2. Extent Report
 
-![image](https://user-images.githubusercontent.com/67543695/218368035-87683f26-cbf7-404e-8912-abbb8ef5c410.png)
+![image](https://user-images.githubusercontent.com/67543695/227717091-555914e8-c23e-45ba-9eb7-7d55f5542dce.png)
 
 ![image](https://user-images.githubusercontent.com/67543695/227716888-da392d37-c7d0-49b8-8bf0-e743ea68a4c8.png)
 
