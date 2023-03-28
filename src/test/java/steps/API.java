@@ -23,7 +23,6 @@ import java.util.Arrays;
 import java.util.List;
 
 
-
 public class API {
     SoftAssert softAssert = new SoftAssert();
 
@@ -149,27 +148,27 @@ public class API {
         RestAssured.baseURI = "https://reqres.in/api/";
         RequestSpecification httpRequest = RestAssured.given();
         JsonObject requestParams = new JsonObject();
-            for (int i = 1; i <= excelUtils.getRowCountInSheet(); i++) {
-                logger.info("count:" + excelUtils.getCellData(i, 2));
-                logger.info(excelUtils.getCellData(i, 0));
-                logger.info(excelUtils.getCellData(i, 1));
-                requestParams.addProperty("name", excelUtils.getCellData(i, 0));
-                requestParams.addProperty("job", excelUtils.getCellData(i, 1));
+        for (int i = 1; i <= excelUtils.getRowCountInSheet(); i++) {
+            logger.info("count:" + excelUtils.getCellData(i, 2));
+            logger.info(excelUtils.getCellData(i, 0));
+            logger.info(excelUtils.getCellData(i, 1));
+            requestParams.addProperty("name", excelUtils.getCellData(i, 0));
+            requestParams.addProperty("job", excelUtils.getCellData(i, 1));
 
-                httpRequest.header("Content-Type", "application/json");
-                httpRequest.body(requestParams.toString());
-                postResponse = httpRequest.request(Method.POST, "users");
-                String responseBody = postResponse.getBody().asString();
-                postListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
+            httpRequest.header("Content-Type", "application/json");
+            httpRequest.body(requestParams.toString());
+            postResponse = httpRequest.request(Method.POST, "users");
+            String responseBody = postResponse.getBody().asString();
+            postListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
 
-                logger.info("==================Response==================");
-                logger.info("Status code:" + postResponse.getStatusCode());
-                for (int y = 0; y < postListResponse.size(); y++) {
-                    logger.info(postListResponse.get(y));
-                }
-                logger.info("==================End Response==================");
+            logger.info("==================Response==================");
+            logger.info("Status code:" + postResponse.getStatusCode());
+            for (int y = 0; y < postListResponse.size(); y++) {
+                logger.info(postListResponse.get(y));
             }
+            logger.info("==================End Response==================");
         }
+    }
 
 }
 
