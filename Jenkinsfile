@@ -44,7 +44,7 @@ pipeline {
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
                 keepAll: false,
-                reportDir: ': /ExtentReports/Extent.html',
+                reportDir: ': /var/jenkins_home/workspace/CucumberTestNG/ExtentReports/Extent.html',
                 reportFiles: 'index.html',
                 reportName: 'HTML Report',
                 reportTitles: '',
