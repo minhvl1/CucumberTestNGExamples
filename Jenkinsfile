@@ -46,7 +46,7 @@ pipeline {
         stage('Export Extent Report'){
             steps {
                 archiveArtifacts artifacts: 'ExtentReports/**,*.html',
-                allowEmptyArchive: true,
+                allowEmptyArchive: true
                 publishHTML([
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
