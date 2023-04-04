@@ -1,8 +1,12 @@
 package common;
 
 import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.service.ExtentService;
 import constants.FrameworkConstants;
+import io.restassured.response.Response;
 import org.apache.commons.validator.GenericValidator;
 import org.apache.logging.log4j.Level;
 import org.openqa.selenium.By;
@@ -79,4 +83,14 @@ public class BaseTest {
             throw new InputMismatchException(date + " is not valid date");
     }
 
+    public static void logIntoExtentReport(Response response, String type){
+        switch (type.toLowerCase()){
+            case "statuscode":
+                ExtentCucumberAdapter.getCurrentStep().info(MarkupHelper.createLabel("Status code:" + response.getStatusCode(), ExtentColor.ORANGE));
+                break;
+            case "responsebody":
+                ExtentCucumberAdapter.getCurrentStep().info(MarkupHelper.createLabel("Response:" + response.prettyPrint(),ExtentColor.GREY));
+                break;
+        }
+    }
 }

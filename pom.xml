@@ -28,7 +28,9 @@
         <allure.version>2.21.0</allure.version>
         <webdrivermanager.version>5.3.2</webdrivermanager.version>
         <env>testing</env>
-
+        <maven.build.timestamp.format>d-MMMM-YY HH-mm-ss</maven.build.timestamp.format>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <timeZone>UTM</timeZone>
     </properties>
     <dependencies>
         <dependency>
@@ -282,6 +284,12 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar"
                     </argLine>
                     <testFailureIgnore>true</testFailureIgnore>
+                    <systemProperties>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>AllureReports/${timestamp}/allure-results</value>
+                        </property>
+                    </systemProperties>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -291,6 +299,8 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
+
         </plugins>
         <resources>
             <resource>

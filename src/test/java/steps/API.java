@@ -2,6 +2,7 @@ package steps;
 
 
 import com.google.gson.JsonObject;
+import common.BaseTest;
 import constants.FrameworkConstants;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -57,6 +58,8 @@ public class API {
             logger.info(getListResponse.get(i));
         }
         logger.info("==================End Response==================");
+        BaseTest.logIntoExtentReport(getResponse,"statuscode");
+        BaseTest.logIntoExtentReport(getResponse,"responsebody");
     }
 
     @Then("Status code is {string}")
@@ -96,6 +99,8 @@ public class API {
             logger.info(postListResponse.get(i));
         }
         logger.info("==================End Response==================");
+        BaseTest.logIntoExtentReport(postResponse,"statuscode");
+        BaseTest.logIntoExtentReport(postResponse,"responsebody");
     }
 
     @Then("Status code post is {string}")
@@ -138,6 +143,9 @@ public class API {
                 logger.info(postListResponse.get(y));
             }
             logger.info("==================End Response==================");
+
+            BaseTest.logIntoExtentReport(postResponse,"statuscode");
+            BaseTest.logIntoExtentReport(postResponse,"responsebody");
         }
     }
 
@@ -167,6 +175,8 @@ public class API {
                 logger.info(postListResponse.get(y));
             }
             logger.info("==================End Response==================");
+            BaseTest.logIntoExtentReport(postResponse,"statuscode");
+            BaseTest.logIntoExtentReport(postResponse,"responsebody");
         }
     }
 

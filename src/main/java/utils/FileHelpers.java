@@ -91,16 +91,21 @@ public class FileHelpers {
     public void cleanAllureReportFiles(){
         try {
 //            String workingDir = System.getProperty("user.dir");
-            String pathFolderallure = "allure-results";
-            File fileAllure = new File(pathFolderallure);
-            File[] listOfFilesAllure = fileAllure.listFiles();
-            System.out.println("......................"+pathFolderallure);
-            for(int i = 0; i < listOfFilesAllure.length; i++){
-                if(listOfFilesAllure[i].isFile()){
-                    new File(listOfFilesAllure[i].toString()).delete();
+            String pathFolerExtent="AllureReports/";
+            File fileExtent = new File(pathFolerExtent);
+            File[] listOfFilesExtent = fileExtent.listFiles();
+
+            System.out.println("count allure: "+ listOfFilesExtent.length);
+            if(listOfFilesExtent.length>2){
+                for(int i = 0; i <listOfFilesExtent.length-2 ; i++){
+                    if(listOfFilesExtent[i].isDirectory()){
+                        FileDeleteStrategy.FORCE.delete(new File(listOfFilesExtent[i].toString()));
+                    }
                 }
             }
-            System.out.println("================ DELETE ALLURE================");
+
+
+            System.out.println("================ DELETE EXTENT================");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
