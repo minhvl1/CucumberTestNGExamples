@@ -38,7 +38,7 @@ pipeline {
 
       stage('Generate Allure') {
             steps {
-                sh 'allure --clean generate allure-results'
+                sh 'allure generate --clean allure-results'
             }
         }
 
