@@ -82,8 +82,8 @@ pipeline {
                         status: 'Success',
                         color: "${currentBuild.currentResult} == 'SUCCESS' ? '#0099ff' : '#ff9900'",
                         factDefinitions:[
-                                [ name: "See Allure Report", template: "[Report](http://192.168.66.116:3001/job/CucumberTestNG/Allure_20Report/)"],
-                                [ name: "See Extent Report", template: "[Report](http://192.168.66.116:3001/job/CucumberTestNG/Extent_20Report/)"],
+                                [ name: "See Allure Report", template: "[Allure](http://192.168.66.116:3001/job/CucumberTestNG/Allure_20Report/)"],
+                                [ name: "See Extent Report", template: "[Extent](http://192.168.66.116:3001/job/CucumberTestNG/Extent_20Report/)"],
                                 [ name: "Commit Message", template: "${GIT_COMMIT_MSG}"],
                                 [ name: "Pipeline Duration", template: "Maven Serenity #${currentBuild.number}"]
                             ]
