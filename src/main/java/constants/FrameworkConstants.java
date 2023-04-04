@@ -30,6 +30,6 @@ public final class FrameworkConstants {
     public static final String YES = "yes";
     public static final String NO = "no";
     public static final String EXPORT_VIDEO_PATH="ExportData/Videos";
-    public static final String VIDEO_RECORD ="no";
+    public static final String VIDEO_RECORD ="no"; //available with browser headed mode
 }
 
