@@ -46,7 +46,7 @@ pipeline {
         stage('Export Extent Report'){
             steps {
                 archiveArtifacts artifacts: 'ExtentReports/**,*.html',
-                allowEmptyArchive: true
+                allowEmptyArchive: true,
                 publishHTML([
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
@@ -61,8 +61,8 @@ pipeline {
 
         stage('Export Allure Report'){
             steps {
-                archiveArtifacts artifacts: 'ExtentReports/**,*.html',
-                allowEmptyArchive: true
+                archiveArtifacts artifacts: 'allure-report/**,*.html',
+                allowEmptyArchive: true,
                 publishHTML([
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
