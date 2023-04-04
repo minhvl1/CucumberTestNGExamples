@@ -37,21 +37,21 @@ pipeline {
         }
 
 
-        stage('Generate Report'){
-            steps {
-                archiveArtifacts artifacts: 'ExtentReports/**,*.html',
-                allowEmptyArchive: true
-                publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: false,
-                reportDir: ': /ExtentReports/',
-                reportFiles: 'Extent.html',
-                reportName: 'HTML Report',
-                reportTitles: '',
-                useWrapperFileDirectly: true])
-            }
-        }
+//         stage('Generate Report'){
+//             steps {
+//                 archiveArtifacts artifacts: 'ExtentReports/**,*.html',
+//                 allowEmptyArchive: true
+//                 publishHTML([
+//                 allowMissing: false,
+//                 alwaysLinkToLastBuild: true,
+//                 keepAll: false,
+//                 reportDir: ': /ExtentReports/',
+//                 reportFiles: 'Extent.html',
+//                 reportName: 'HTML Report',
+//                 reportTitles: '',
+//                 useWrapperFileDirectly: true])
+//             }
+//         }
 
     }
 }
