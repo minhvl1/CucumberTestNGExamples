@@ -40,6 +40,7 @@ pipeline {
         stage('Generate Report'){
             steps {
                 archiveArtifacts artifacts: 'ExtentReports/**,*.html',
+                allowEmptyArchive: true
                 publishHTML([
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
