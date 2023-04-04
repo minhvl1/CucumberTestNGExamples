@@ -43,7 +43,7 @@ pipeline {
         }
 
 
-        stage('Generate Report'){
+        stage('Export Extent Report'){
             steps {
                 archiveArtifacts artifacts: 'ExtentReports/**,*.html',
                 allowEmptyArchive: true
@@ -51,13 +51,28 @@ pipeline {
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
                 keepAll: false,
-                reportDir: ': /ExtentReports/',
+                reportDir: '/ExtentReports/',
                 reportFiles: 'Extent.html',
-                reportName: 'HTML Report',
+                reportName: 'Extent Report',
                 reportTitles: '',
                 useWrapperFileDirectly: true])
             }
         }
 
+        stage('Export Allure Report'){
+            steps {
+                archiveArtifacts artifacts: 'ExtentReports/**,*.html',
+                allowEmptyArchive: true
+                publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: false,
+                reportDir: '/allure-report/',
+                reportFiles: 'index.html',
+                reportName: 'Allure Report',
+                reportTitles: '',
+                useWrapperFileDirectly: true])
+            }
+        }
     }
 }
