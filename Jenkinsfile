@@ -39,7 +39,7 @@ pipeline {
 
         stage('Generate Report'){
             steps {
-                archive (includes: 'pkg/*.gem')
+                archiveArtifacts artifacts: 'ExtentReports/**,*.html',
                 publishHTML([
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
