@@ -61,7 +61,8 @@ pipeline {
 
         stage('Export Allure Report'){
             steps {
-               archive (includes: 'allure-report/*.html')
+                archiveArtifacts artifacts: 'allure-report/**,*.html',
+                allowEmptyArchive: true
                 publishHTML([
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
