@@ -9,6 +9,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 
 public class API {
@@ -45,9 +47,13 @@ public class API {
         RequestSpecification httpRequest = RestAssured.given();
 
         getResponse = httpRequest.request(Method.GET, arg0);
-//        getResponse.prettyPrint();
+        getResponse.prettyPrint();
         String responseBody = getResponse.getBody().asString();
         getListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
+
+//        Map<String,String> responseBody1 = JsonPath.from(getResponse.asPrettyString()).get();
+//        logger.info(responseBody1.get("title"));
+//        logger.info(responseBody1.get("dueDate"));
     }
 
     @When("show get response body")
@@ -58,8 +64,10 @@ public class API {
             logger.info(getListResponse.get(i));
         }
         logger.info("==================End Response==================");
-        BaseTest.logIntoExtentReport(getResponse,"statuscode");
-        BaseTest.logIntoExtentReport(getResponse,"responsebody");
+        BaseTest.logIntoExtentReport(getResponse, "statuscode");
+        BaseTest.logIntoExtentReport(getResponse, "responsebody");
+
+
     }
 
     @Then("Status code is {string}")
@@ -99,8 +107,8 @@ public class API {
             logger.info(postListResponse.get(i));
         }
         logger.info("==================End Response==================");
-        BaseTest.logIntoExtentReport(postResponse,"statuscode");
-        BaseTest.logIntoExtentReport(postResponse,"responsebody");
+        BaseTest.logIntoExtentReport(postResponse, "statuscode");
+        BaseTest.logIntoExtentReport(postResponse, "responsebody");
     }
 
     @Then("Status code post is {string}")
@@ -144,8 +152,8 @@ public class API {
             }
             logger.info("==================End Response==================");
 
-            BaseTest.logIntoExtentReport(postResponse,"statuscode");
-            BaseTest.logIntoExtentReport(postResponse,"responsebody");
+            BaseTest.logIntoExtentReport(postResponse, "statuscode");
+            BaseTest.logIntoExtentReport(postResponse, "responsebody");
         }
     }
 
@@ -175,8 +183,8 @@ public class API {
                 logger.info(postListResponse.get(y));
             }
             logger.info("==================End Response==================");
-            BaseTest.logIntoExtentReport(postResponse,"statuscode");
-            BaseTest.logIntoExtentReport(postResponse,"responsebody");
+            BaseTest.logIntoExtentReport(postResponse, "statuscode");
+            BaseTest.logIntoExtentReport(postResponse, "responsebody");
         }
     }
 
