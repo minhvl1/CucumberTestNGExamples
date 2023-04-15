@@ -51,9 +51,11 @@ public class API {
         String responseBody = getResponse.getBody().asString();
         getListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
 
-//        Map<String,String> responseBody1 = JsonPath.from(getResponse.asPrettyString()).get();
+//        Map<String,Object> responseBody1 = JsonPath.from(getResponse.asPrettyString()).get();
+//        logger.info(responseBody1.get("id"));
 //        logger.info(responseBody1.get("title"));
 //        logger.info(responseBody1.get("dueDate"));
+//        logger.info(responseBody1.get("completed"));
     }
 
     @When("show get response body")
