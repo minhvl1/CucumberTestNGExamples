@@ -30,7 +30,7 @@
         <env>testing</env>
         <maven.build.timestamp.format>d-MMMM-YY HH-mm-ss</maven.build.timestamp.format>
         <timestamp>${maven.build.timestamp}</timestamp>
-        <timeZone>UTM</timeZone>
+        <monte-screen-recorder.version>0.7.7.0</monte-screen-recorder.version>
     </properties>
     <dependencies>
         <dependency>
@@ -188,6 +188,12 @@
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>
             <version>1.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.stephenc.monte</groupId>
+            <artifactId>monte-screen-recorder</artifactId>
+            <version>${monte-screen-recorder.version}</version>
         </dependency>
 
     </dependencies>

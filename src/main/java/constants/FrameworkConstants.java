@@ -29,5 +29,7 @@ public final class FrameworkConstants {
     public static final String SEND_MSG_TO_SLACK = PropertiesHelpers.getEnvironment("SEND_TO_SLACK");
     public static final String YES = "yes";
     public static final String NO = "no";
+    public static final String EXPORT_VIDEO_PATH="ExportData/Videos";
+    public static final String VIDEO_RECORD ="no";
 }
 
