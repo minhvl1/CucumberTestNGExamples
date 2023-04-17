@@ -21,8 +21,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
-                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                                    sh "exit 1"
             }
         }
         stage('Test') {
@@ -41,8 +39,6 @@ pipeline {
       stage('Generate Allure') {
             steps {
                 sh 'allure generate --clean allure-results'
-                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                                    sh "exit 1"
             }
         }
 
@@ -60,8 +56,6 @@ pipeline {
                 reportName: 'Extent Report',
                 reportTitles: '',
                 useWrapperFileDirectly: true])
-                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                                    sh "exit 1"
             }
         }
 
@@ -78,8 +72,6 @@ pipeline {
                 reportName: 'Allure Report',
                 reportTitles: '',
                 useWrapperFileDirectly: true])
-                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                                    sh "exit 1"
             }
         }
 
