@@ -35,12 +35,12 @@ pipeline {
                     echo currentBuild.result
                 }
         }
-
-      stage('Generate Allure') {
-            steps {
-                sh 'allure generate --clean allure-results'
-            }
-        }
+//
+//       stage('Generate Allure') {
+//             steps {
+//                 sh 'allure generate --clean allure-results'
+//             }
+//         }
 
 
         stage('Export Extent Report'){
@@ -59,21 +59,21 @@ pipeline {
             }
         }
 
-        stage('Export Allure Report'){
-            steps {
-                archiveArtifacts artifacts: 'allure-report/**,*.html',
-                allowEmptyArchive: true
-                publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: false,
-                reportDir: '/var/jenkins_home/workspace/CucumberTestNG/allure-report/',
-                reportFiles: 'index.html',
-                reportName: 'Allure Report',
-                reportTitles: '',
-                useWrapperFileDirectly: true])
-            }
-        }
+//         stage('Export Allure Report'){
+//             steps {
+//                 archiveArtifacts artifacts: 'allure-report/**,*.html',
+//                 allowEmptyArchive: true
+//                 publishHTML([
+//                 allowMissing: false,
+//                 alwaysLinkToLastBuild: true,
+//                 keepAll: false,
+//                 reportDir: '/var/jenkins_home/workspace/CucumberTestNG/allure-report/',
+//                 reportFiles: 'index.html',
+//                 reportName: 'Allure Report',
+//                 reportTitles: '',
+//                 useWrapperFileDirectly: true])
+//             }
+//         }
 
         stage('Publish report to MS team'){
                      steps {
