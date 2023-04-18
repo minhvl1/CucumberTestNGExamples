@@ -55,21 +55,21 @@ pipeline {
             }
         }
 
-        stage('Export Extent Report'){
-            steps {
-                archiveArtifacts artifacts: 'ExtentReports/**,*.html',
-                allowEmptyArchive: true
-                publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: false,
-                reportDir: '/var/jenkins_home/workspace/CucumberTestNG/ExtentReports/',
-                reportFiles: 'Extent.html',
-                reportName: 'Extent Report',
-                reportTitles: '',
-                useWrapperFileDirectly: true])
-            }
-        }
+//         stage('Export Extent Report'){
+//             steps {
+//                 archiveArtifacts artifacts: 'ExtentReports/**,*.html',
+//                 allowEmptyArchive: true
+//                 publishHTML([
+//                 allowMissing: false,
+//                 alwaysLinkToLastBuild: true,
+//                 keepAll: false,
+//                 reportDir: '/var/jenkins_home/workspace/CucumberTestNG/ExtentReports/',
+//                 reportFiles: 'Extent.html',
+//                 reportName: 'Extent Report',
+//                 reportTitles: '',
+//                 useWrapperFileDirectly: true])
+//             }
+//         }
 
 //         stage('Export Allure Report'){
 //             steps {
