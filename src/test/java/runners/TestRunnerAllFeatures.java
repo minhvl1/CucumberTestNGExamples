@@ -28,7 +28,7 @@ import utils.*;
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true
 //        , tags = "not @Jira and not @FeatureApi"
-        , tags = "not @Jira and not @EXAM"
+        , tags = "not @Jira"
 )
 
 public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
