@@ -75,7 +75,7 @@ public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
     public void cleanReport() {
         logger.info("================ BEFORE SUITE ================");
         logger.info("Environment:" + FrameworkConstants.ENVIRONMENT);
-//        fileHelpers.cleanAllureReportFiles();
+        fileHelpers.cleanAllureReportFiles();
         fileHelpers.cleanExtentReportFiles();
     }
 
