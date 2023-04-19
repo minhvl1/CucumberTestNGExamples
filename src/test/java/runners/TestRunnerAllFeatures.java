@@ -28,7 +28,7 @@ import utils.*;
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true
 //        , tags = "not @Jira and not @FeatureApi"
-        , tags = "not @Jira"
+        , tags = "not @Jira and not @EXAM"
 )
 
 public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
@@ -75,7 +75,7 @@ public class TestRunnerAllFeatures extends AbstractTestNGCucumberTests {
     public void cleanReport() {
         logger.info("================ BEFORE SUITE ================");
         logger.info("Environment:" + FrameworkConstants.ENVIRONMENT);
-        fileHelpers.cleanAllureReportFiles();
+//        fileHelpers.cleanAllureReportFiles();
         fileHelpers.cleanExtentReportFiles();
     }
 
