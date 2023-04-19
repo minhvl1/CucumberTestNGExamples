@@ -55,10 +55,11 @@ pipeline {
 //             }
 //         }
 
-            stage("Publish Allure report"){
+     stage("Publish Allure report"){
                 steps{
                     echo "publish allure"
-                    allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+                    sh "mkdir -p allure-results"
+                    allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
               }
             }
 

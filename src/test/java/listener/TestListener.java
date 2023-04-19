@@ -1,8 +1,5 @@
 package listener;
 
-
-import com.aventstack.extentreports.Status;
-
 import static constants.FrameworkConstants.*;
 
 import org.apache.logging.log4j.LogManager;
