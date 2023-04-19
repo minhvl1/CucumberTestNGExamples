@@ -41,9 +41,9 @@ pipeline {
 //                 sh 'allure generate --clean allure-results'
 //             }
 //         }
-        stage('Allure reports') {
-            steps {
-            script {
+//         stage('Allure reports') {
+//             steps {
+//             script {
 //                     allure([
 //                             includeProperties: false,
 //                             jdk: '',
@@ -51,13 +51,16 @@ pipeline {
 //                             reportBuildPolicy: 'ALWAYS',
 //                             results: [[path: 'target/allure-results']]
 //                     ])
-                        allure
-                        includeProperties: false,
-                        jdk: '',
-                        results: [[path: 'target/allure-results']]
+//             }
+//             }
+//         }
+
+            stage("Publish Allure report"){
+                steps{
+                    echo "publish allure"
+                    allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+              }
             }
-            }
-        }
 
 //         stage('Export Extent Report'){
 //             steps {
