@@ -5,19 +5,30 @@ import com.aventstack.extentreports.Status;
 
 import static constants.FrameworkConstants.*;
 
+import io.qameta.allure.Attachment;
+import io.restassured.RestAssured;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.*;
 import utils.ScreenRecoderHelpers;
 
 import java.awt.*;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 
 
 public class TestListener implements ITestListener, ISuiteListener, IInvokedMethodListener {
 
     private static final Logger logger = LogManager.getLogger(TestListener.class);
     private ScreenRecoderHelpers screenRecorder;
+    private ByteArrayOutputStream request = new ByteArrayOutputStream();
+    private ByteArrayOutputStream response = new ByteArrayOutputStream();
+    private PrintStream requestVar = new PrintStream(request,true);
+    private PrintStream responseVar = new PrintStream(response,true);
 
     public TestListener() {
         try {
@@ -50,7 +61,8 @@ public class TestListener implements ITestListener, ISuiteListener, IInvokedMeth
 
     @Override
     public void onStart(ISuite iSuite) {
-
+        RestAssured.filters(new ResponseLoggingFilter(LogDetail.ALL,responseVar),
+        new RequestLoggingFilter(LogDetail.ALL, requestVar));
     }
 
     @Override
@@ -68,6 +80,8 @@ public class TestListener implements ITestListener, ISuiteListener, IInvokedMeth
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
         screenRecorder.stopRecording(true);
+        logRequest(request);
+        logResponse(response);
     }
 
     @Override
@@ -87,5 +101,21 @@ public class TestListener implements ITestListener, ISuiteListener, IInvokedMeth
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
         logger.error("Test failed but it is in defined success ratio " + getTestName(iTestResult));
+    }
+
+    @Attachment(value ="request")
+    public byte[] logRequest(final ByteArrayOutputStream stream){
+        return attach(stream) ;
+    }
+
+    @Attachment(value ="response")
+    public byte[] logResponse(final ByteArrayOutputStream stream){
+        return attach(stream) ;
+    }
+
+    public byte[] attach(final ByteArrayOutputStream log){
+        final byte[] array = log.toByteArray();
+        log.reset();
+        return array;
     }
 }

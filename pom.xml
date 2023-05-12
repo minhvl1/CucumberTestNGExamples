@@ -39,6 +39,14 @@
             <version>${allure.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+<!--        <dependency>-->
+<!--            <groupId>io.qameta.allure</groupId>-->
+<!--            <artifactId>allure-testng</artifactId>-->
+<!--            <version>2.22.0</version>-->
+<!--        </dependency>-->
+
+
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -290,12 +298,12 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar"
                     </argLine>
                     <testFailureIgnore>true</testFailureIgnore>
-                    <systemProperties>
-                        <property>
-                            <name>allure.results.directory</name>
-                            <value>AllureReports/${timestamp}/allure-results</value>
-                        </property>
-                    </systemProperties>
+<!--                    <systemProperties>-->
+<!--                        <property>-->
+<!--                            <name>allure.results.directory</name>-->
+<!--                            <value>AllureReports/${timestamp}/allure-results</value>-->
+<!--                        </property>-->
+<!--                    </systemProperties>-->
                 </configuration>
                 <dependencies>
                     <dependency>

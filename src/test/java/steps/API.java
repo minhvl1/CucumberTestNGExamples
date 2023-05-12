@@ -7,6 +7,7 @@ import constants.FrameworkConstants;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.path.json.JsonPath;
@@ -41,6 +42,7 @@ public class API {
         softAssert.assertAll();
     }
 
+    @Step("Given send get method with id={string}")
     @Given("send get method with id={string}")
     public void sendGetMethodWithId(String arg0) {
         RestAssured.baseURI = FrameworkConstants.BASE_FAKERESAPI_URL + FrameworkConstants.FAKER_ACTIVITY_MODULE;
@@ -58,6 +60,7 @@ public class API {
 //        logger.info(responseBody1.get("completed"));
     }
 
+    @Step("When show get response body")
     @When("show get response body")
     public void showGetResponseBody() {
         logger.info("==================Response==================");
@@ -72,6 +75,7 @@ public class API {
 
     }
 
+    @Step("Then Status code is {string}")
     @Then("Status code is {string}")
     public void statusCodeIs(String arg0) {
         softAssert.assertEquals(getResponse.getStatusCode(), Integer.parseInt(arg0));
