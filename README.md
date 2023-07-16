@@ -79,5 +79,13 @@ Run by tags:
 ![image](https://user-images.githubusercontent.com/67543695/220000344-2344aca0-ee10-4c8e-be50-2c17eac04011.png)
 
 ### ALLURE-DOCKER-SERVICE
+
 1 `docker compose up -d`
+
 2 `mvn clean verify`
+
+![image](https://github.com/minhvl1/CucumberTestNGExamples/assets/67543695/78f3c3f3-e3da-4076-b9e4-25f19be7a752)
+
+![image](https://github.com/minhvl1/CucumberTestNGExamples/assets/67543695/b5d14b99-caa1-41c4-92b0-1b589dee944b)
+
+![image](https://github.com/minhvl1/CucumberTestNGExamples/assets/67543695/a60ad159-9cb7-43ed-b24e-6de5cb830f89)
