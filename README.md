@@ -78,3 +78,6 @@ Run by tags:
 
 ![image](https://user-images.githubusercontent.com/67543695/220000344-2344aca0-ee10-4c8e-be50-2c17eac04011.png)
 
+### ALLURE-DOCKER-SERVICE
+1 `docker compose up -d`
+2 `mvn clean verify`
