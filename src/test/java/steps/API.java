@@ -2,12 +2,15 @@ package steps;
 
 
 import com.google.gson.JsonObject;
+import common.BaseTest;
 import constants.FrameworkConstants;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -21,7 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Map;
 
 
 public class API {
@@ -39,17 +42,25 @@ public class API {
         softAssert.assertAll();
     }
 
+    @Step("Given send get method with id={string}")
     @Given("send get method with id={string}")
     public void sendGetMethodWithId(String arg0) {
         RestAssured.baseURI = FrameworkConstants.BASE_FAKERESAPI_URL + FrameworkConstants.FAKER_ACTIVITY_MODULE;
         RequestSpecification httpRequest = RestAssured.given();
 
         getResponse = httpRequest.request(Method.GET, arg0);
-//        getResponse.prettyPrint();
+        getResponse.prettyPrint();
         String responseBody = getResponse.getBody().asString();
         getListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
+
+//        Map<String,Object> responseBody1 = JsonPath.from(getResponse.asPrettyString()).get();
+//        logger.info(responseBody1.get("id"));
+//        logger.info(responseBody1.get("title"));
+//        logger.info(responseBody1.get("dueDate"));
+//        logger.info(responseBody1.get("completed"));
     }
 
+    @Step("When show get response body")
     @When("show get response body")
     public void showGetResponseBody() {
         logger.info("==================Response==================");
@@ -58,8 +69,13 @@ public class API {
             logger.info(getListResponse.get(i));
         }
         logger.info("==================End Response==================");
+        BaseTest.logIntoExtentReport(getResponse, "statuscode");
+        BaseTest.logIntoExtentReport(getResponse, "responsebody");
+
+
     }
 
+    @Step("Then Status code is {string}")
     @Then("Status code is {string}")
     public void statusCodeIs(String arg0) {
         softAssert.assertEquals(getResponse.getStatusCode(), Integer.parseInt(arg0));
@@ -97,6 +113,8 @@ public class API {
             logger.info(postListResponse.get(i));
         }
         logger.info("==================End Response==================");
+        BaseTest.logIntoExtentReport(postResponse, "statuscode");
+        BaseTest.logIntoExtentReport(postResponse, "responsebody");
     }
 
     @Then("Status code post is {string}")
@@ -139,6 +157,9 @@ public class API {
                 logger.info(postListResponse.get(y));
             }
             logger.info("==================End Response==================");
+
+            BaseTest.logIntoExtentReport(postResponse, "statuscode");
+            BaseTest.logIntoExtentReport(postResponse, "responsebody");
         }
     }
 
@@ -149,27 +170,29 @@ public class API {
         RestAssured.baseURI = "https://reqres.in/api/";
         RequestSpecification httpRequest = RestAssured.given();
         JsonObject requestParams = new JsonObject();
-            for (int i = 1; i <= excelUtils.getRowCountInSheet(); i++) {
-                logger.info("count:" + excelUtils.getCellData(i, 2));
-                logger.info(excelUtils.getCellData(i, 0));
-                logger.info(excelUtils.getCellData(i, 1));
-                requestParams.addProperty("name", excelUtils.getCellData(i, 0));
-                requestParams.addProperty("job", excelUtils.getCellData(i, 1));
+        for (int i = 1; i <= excelUtils.getRowCountInSheet(); i++) {
+            logger.info("count:" + excelUtils.getCellData(i, 2));
+            logger.info(excelUtils.getCellData(i, 0));
+            logger.info(excelUtils.getCellData(i, 1));
+            requestParams.addProperty("name", excelUtils.getCellData(i, 0));
+            requestParams.addProperty("job", excelUtils.getCellData(i, 1));
 
-                httpRequest.header("Content-Type", "application/json");
-                httpRequest.body(requestParams.toString());
-                postResponse = httpRequest.request(Method.POST, "users");
-                String responseBody = postResponse.getBody().asString();
-                postListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
+            httpRequest.header("Content-Type", "application/json");
+            httpRequest.body(requestParams.toString());
+            postResponse = httpRequest.request(Method.POST, "users");
+            String responseBody = postResponse.getBody().asString();
+            postListResponse = new ArrayList<String>(Arrays.asList(responseBody.split(",")));
 
-                logger.info("==================Response==================");
-                logger.info("Status code:" + postResponse.getStatusCode());
-                for (int y = 0; y < postListResponse.size(); y++) {
-                    logger.info(postListResponse.get(y));
-                }
-                logger.info("==================End Response==================");
+            logger.info("==================Response==================");
+            logger.info("Status code:" + postResponse.getStatusCode());
+            for (int y = 0; y < postListResponse.size(); y++) {
+                logger.info(postListResponse.get(y));
             }
+            logger.info("==================End Response==================");
+            BaseTest.logIntoExtentReport(postResponse, "statuscode");
+            BaseTest.logIntoExtentReport(postResponse, "responsebody");
         }
+    }
 
 }
 

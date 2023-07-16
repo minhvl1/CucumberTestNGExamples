@@ -116,31 +116,30 @@ public class CucumberListener implements EventListener {
     // here we create the test node
     private void stepStarted(TestStepStarted event) {
 
-        String stepName = "";
-        String keyword = "";
-
-        // We check whether the event is from a hook or step
-        if (event.getTestStep() instanceof PickleStepTestStep) {
-            // TestStepStarted event implements PickleStepTestStep interface
-            // Which have additional methods to interact with the event object
-            // So we have to cast TestCase object to get those methods
-            PickleStepTestStep steps = (PickleStepTestStep) event.getTestStep();
-            stepName = steps.getStep().getText();
-            keyword = steps.getStep().getKeyword();
-
-        } else {
-            // Same with HookTestStep
-            HookTestStep hoo = (HookTestStep) event.getTestStep();
-            stepName = hoo.getHookType().name();
-
-        }
+//        String stepName = "";
+//        String keyword = "";
+//
+//        // We check whether the event is from a hook or step
+//        if (event.getTestStep() instanceof PickleStepTestStep) {
+//            // TestStepStarted event implements PickleStepTestStep interface
+//            // Which have additional methods to interact with the event object
+//            // So we have to cast TestCase object to get those methods
+//            PickleStepTestStep steps = (PickleStepTestStep) event.getTestStep();
+//            stepName = steps.getStep().getText();
+//            keyword = steps.getStep().getKeyword();
+//
+//        } else {
+//            // Same with HookTestStep
+//            HookTestStep hoo = (HookTestStep) event.getTestStep();
+//            stepName = hoo.getHookType().name();
+//
+//        }
 
 //        step = scenario.createNode(Given.class, keyword + " " + stepName);
     }
 
     // This is triggered when TestStep is finished
     private void stepFinished(TestStepFinished event) {
-
     }
 
 }
