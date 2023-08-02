@@ -91,38 +91,32 @@ public class FileHelpers {
     public void cleanAllureReportFiles(){
         try {
 //            String workingDir = System.getProperty("user.dir");
-//            String pathFolerExtent="AllureReports/";
-            String pathFolerAllure="allure-results/";
-            File fileAllure = new File(pathFolerAllure);
+            String pathFolderallure = "allure-results";
+            File fileAllure = new File(pathFolderallure);
             File[] listOfFilesAllure = fileAllure.listFiles();
-
-            System.out.println("count allure: "+ listOfFilesAllure.length);
-            if(listOfFilesAllure.length>2){
-                for(int i = 0; i <listOfFilesAllure.length-2 ; i++){
-                    if(listOfFilesAllure[i].isDirectory()){
-                        FileDeleteStrategy.FORCE.delete(new File(listOfFilesAllure[i].toString()));
-                    }
+            System.out.println("......................"+pathFolderallure);
+            for(int i = 0; i < listOfFilesAllure.length; i++){
+                if(listOfFilesAllure[i].isFile()){
+                    new File(listOfFilesAllure[i].toString()).delete();
                 }
             }
-
-
             System.out.println("================ DELETE ALLURE================");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void cleanExtentReportFiles(){
+    public void cleanExtentReportFiles() {
         try {
 //            String workingDir = System.getProperty("user.dir");
-            String pathFolerExtent="ExtentReports/";
+            String pathFolerExtent = "ExtentReports/";
             File fileExtent = new File(pathFolerExtent);
             File[] listOfFilesExtent = fileExtent.listFiles();
 
-            System.out.println("count extent: "+ listOfFilesExtent.length);
-            if(listOfFilesExtent.length>2){
-                for(int i = 0; i <listOfFilesExtent.length-2 ; i++){
-                    if(listOfFilesExtent[i].isDirectory()){
+            System.out.println("count extent: " + listOfFilesExtent.length);
+            if (listOfFilesExtent.length > 2) {
+                for (int i = 0; i < listOfFilesExtent.length - 2; i++) {
+                    if (listOfFilesExtent[i].isDirectory()) {
                         FileDeleteStrategy.FORCE.delete(new File(listOfFilesExtent[i].toString()));
                     }
                 }
