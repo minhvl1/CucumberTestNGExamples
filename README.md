@@ -1,4 +1,4 @@
-﻿# GB-Demo
+# Framework example
 ### V1.2
 1. Migrate log4j
 2. Custom log level
